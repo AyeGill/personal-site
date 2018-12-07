@@ -1,0 +1,7 @@
+<ul>
+    $for(posts)$
+        <li>
+            <a href="$url$"> $if(title)$ $title$ $else$ untitled post $endif$ </a> - $if(date)$ $date$ $else$ sometime $endif$
+        </li>
+    $endfor$
+</ul>

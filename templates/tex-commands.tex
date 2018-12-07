@@ -1,0 +1,145 @@
+%Creates boxed equations
+\newcommand{\boxedeqn}[1]{%
+  \[\fbox{%
+      \addtolength{\linewidth}{-2\fboxsep}%
+      \addtolength{\linewidth}{-2\fboxrule}%
+      \begin{minipage}{\linewidth}%
+      \begin{equation}#1\end{equation}%
+      \end{minipage}%
+    }\]%
+}
+%Sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\S}{\cl{S}}
+\renewcommand{\P}{\mathbb{P}}
+
+%Unsorted commands
+\newcommand{\inv}{^{-1}} %bemærk mærkelig opførsel ved ' -er og andre superskrift
+\newcommand{\op}{^{op}}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\ang}[1]{\langle #1 \rangle}
+\usepackage{eufrak}
+\DeclareMathOperator{\map}{map}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Hom}{Hom}
+
+\DeclareMathOperator{\Alg}{Alg}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\hocolim}{hocolim}
+
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Cat}{\cl{C}at}
+\DeclareMathOperator{\Sp}{Sp}
+
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\sSet}{sSet}
+\DeclareMathOperator{\Fin}{Fin}
+
+\newcommand{\icat}{$$\infty$$-category\xspace}
+\newcommand{\icats}{$$\infty$$-categories\xspace}
+\newcommand{\ol}{\overline}
+\newcommand{\osum}{\bigoplus}
+\newcommand{\tensor}{\otimes}
+\newcommand{\lsym}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\lift}{\boxslash}
+\newcommand{\popr}{\boxempty}
+\newcommand{\pbpw}[1]{^{\boxempty #1}}
+\newcommand{\from}{\leftarrow}
+\newcommand{\labelto}[1]{\overset{#1}{\to}}
+\newcommand{\labelfrom}[1]{\overset{#1}{\from}}
+
+
+%Phi, Epsilon
+\let\oldphi\phi
+\let\oldepsilon\epsilon
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+%Font abbreviations
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\cl}[1]{\mathcal{#1}}
+\newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\mscr}[1]{\mathscr{#1}}
+\newcommand{\frk}[1]{\mathfrak{#1}}
+
+
+\newcommand{\rtri}{\triangleright}
+\newcommand{\ltri}{\triangleleft}
+%Euler angles
+\newcommand{\eulerX}[1]{%
+\left[\begin{array}{c c c}
+1 & 0 &0\\
+0 & \cos\left(#1\right) & \sin\left(#1\right)\\
+ 0 & -\sin\left(#1\right)& \cos\left(#1\right)
+\end{array}\right]}
+
+
+\newcommand{\eulerY}[1]{%
+\left[\begin{array}{c c c}
+\cos\left(#1\right) &0& -\sin\left(#1\right) \\
+0 & 1 & 0\\
+ \sin\left(#1\right)& 0 &\cos\left(#1\right)
+\end{array}\right]}
+
+\newcommand{\eulerZ}[1]{%
+\left[\begin{array}{c c c}
+\cos\left(#1\right) & \sin\left(#1\right)& 0 \\
+ -\sin\left(#1\right)& \cos\left(#1\right)& 0 \\
+0 & 0& 1
+\end{array}\right]}
+\newcommand{\norm}[1]{
+\left\|#1\right\|
+}
+
+%P-norm
+\newcommand{\myNorm}[2]{%
+\left\|#1\right\|_{#2}
+}
+
+%Vector Stuff
+\newcommand{\vect}[1]{\overset{\rightharpoonup}{#1}}
+
+
+%Matrix stuff
+\newcommand{\diag}{{\rm diag}}
+\newcommand{\myspan}{{\rm span}}
+\newcommand{\Mat}{{\rm Mat}}
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\sign}{{\rm sgn}}
+\newcommand{\tr}{{\rm tr}\,}
+
+%Calculus stuff
+\newcommand{\mydn}[3]{\frac{d^{#3}#1}{d#2^{#3}}}
+\newcommand{\myd}[2]{\frac{d #1}{d#2}}
+\newcommand{\myDn}[3]{\frac{\partial^{#3}#1}{\partial #2^{#3}}}
+\newcommand{\myD}[2]{\frac{\partial #1}{\partial #2}}
+
+%Review responses
+\newcommand{\responseitem}[2]{
+\item #1\newline
+\begin{tcolorbox}[width=\linewidth ,colback=lightgray,boxrule=0pt]
+#2
+\end{tcolorbox}
+}
+
+
+%Definition
+\newcommand{\isdef}{:=}
+
+\DeclareMathSymbol\bbDelta  \mathord{bbold}{"01}
+
+%Letters
+\newcommand{\BBC}{{\mathbb C}}
+\newcommand{\BBR}{{\mathbb R}}
+\newcommand{\BBU}{{\mathbb U}}
+\newcommand{\BBX}{{\mathbb X}}
+
+$body$
