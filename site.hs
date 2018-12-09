@@ -87,4 +87,4 @@ postCtx =
     defaultContext
 
 pdfCtx :: Context CopyFile
-pdfCtx = urlField "url" `mappend` pathField "title"
+pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
