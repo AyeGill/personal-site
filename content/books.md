@@ -1,5 +1,6 @@
 ---
 title: My recommended math books, and the problem of recommending math books.
+date: 2019-01-14
 ---
 
 I'm sometimes asked (as are, probably, most other graduate students) which textbooks to read about various mathematical topics.
@@ -7,10 +8,15 @@ The askers are usually undergraduates who are interested in studying something w
 A typical conversation may go something like this:
 
 Person: If I want to learn about $TOPIC, what should I read?
+
 Me: Well, I learned it from "A", and I liked that well enough.
+
 P: Fair enough.
+
 Me: But it's not perfect or anything. Later I read "B", and I think I like that better. But of course by that point I already knew something about $TOPIC, so that doesn't mean it's good for newcomers..
+
 P: Okay..
+
 Me: Then there's also "C", which is the classical text.. but that's probably better as a reference than to learn from...
 
 And so on, and so forth. The result is that the other person leaves with a list of approximately every textbook on the subject which I have ever opened, which is not particularly useful.
