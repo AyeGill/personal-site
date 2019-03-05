@@ -6,7 +6,6 @@ Welcome to my page.
 
 Currently, I am studying a master's degee (cand.scient) in mathematics at the [University of Copenhagen](https://www.math.ku.dk/english).
 
-
 ## Some things I did:
 
 My undergraduate thesis, with the inelegant title "[Localizations in Higher Algebra and Algebraic K-theory](pdfs/bach-projekt.pdf)".

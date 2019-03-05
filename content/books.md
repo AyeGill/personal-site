@@ -35,9 +35,11 @@ This list is also heavily slanted towards my own interests (e.g. it contains mor
 All these recommendations are for the advanced undergraduate/beginning graduate level.
 
 ### Unqualified recommendations
+
 - Point-set topology: *Topology* by J. Munkres. This is not my favorite math book, but in my view it is the "most perfect" one. Point-set topology is the only subject where I *never* feel a need to discuss other books. I will add the remark that the second part, on algebraic topology, is not as good (although it is by no means bad).
 
 ### Recommendations
+
 - Algebraic topology: *Algebraic Topology* by A. Hatcher, or *A Concise Course in Algebraic Topology* by J. P. May. Hatcher is probably more pedagogic and leans towards a geometric viewpoint, where May is more concise and leans towards an algebraic viewpoint.
 - Basic category theory: *Categories in Context* by E. Riehl. There are many introductions to category theory, but I think this is the best one. It has a wonderful number of examples.
 - *Concrete Mathematics* by R. L. Graham, D. E. Knuth and O. Patashnik. It won't tell you anything about category theory or PDEs, but it will definitely make you more complete as a mathematician.
