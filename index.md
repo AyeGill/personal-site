@@ -13,6 +13,6 @@ Essentially an account of the main result of [Universality of multiplicative inf
 Also contains some material about localizations in $\infty$-categories and symmetric-monoidal $\infty$-categories.
 Definitely contains at least some minor errors, possibly some major ones.
 
-A discussion of $\E_k$-indecomposables in the language of $\infty$-categories and $\infty$-operads:
+A discussion of $E_k$-indecomposables in the language of $\infty$-categories and $\infty$-operads:
 [$E_k$-indecomposables and $E_k$-homology](pdfs/Ekroot.pdf).
 Very rough at the moment, certain to contain a number of errors.

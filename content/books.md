@@ -26,7 +26,7 @@ but different novices need different types of exposition too, and the problem of
 My experience with the various math-related parts of the internet mirrors this. Posting "can someone recommend a good introduction to category theory" to reddit or twitter is a good way to find a list of every halfway decent introduction to category theory written in the last 30 years (and a few older ones, probably including Mac Lane itself), but not much else.
 
 ## Recommendations
-The following list should be interpreted in light of the following discussion.
+The following list should be interpreted in light of the preceding discussion.
 I have erred on the side of recommending a single good book rather than two books of which one is good and one is okay.
 In the (common) case that I don't think my recommendations would outperform a google search for "math textbook $TOPIC" or a reddit thread on r/math, I have omitted my recommendations.
 
