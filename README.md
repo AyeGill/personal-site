@@ -1,3 +1,5 @@
+# README
+
 This is the code i use for generating my personal site.
 If you should come across it in the wild, please feel free to use it.
 However, you may be missing some content which is necessary to make it work:
