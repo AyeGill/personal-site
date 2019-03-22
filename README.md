@@ -13,6 +13,8 @@ However, you may be missing some content which is necessary to make it work:
 The generator will work as long as these things exist (in fact, beyond the templates folder, the folders are not strictly necessary).
 
 The standard way of using this is to build the executable it with stack: `stack build`, then build the site with `stack exec site build`.
-It should be possible to build site.hs with any haskell compiler, and then run `./site build` to build the site, but I have not tested this.
 
 The included .gitignore file will prevent .git from syncing the contents of the `pdfs/` and `images/` files, since you probably shouldn't be saving those with git.
+
+If you're using NFS to host like me, you can sync by going into `_site/` after building and doing `rsync -r . username@server:`
+(The contents of `_site/` should be in the top level folder that NFS exposes to you.)
