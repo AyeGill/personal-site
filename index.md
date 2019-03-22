@@ -16,3 +16,5 @@ Definitely contains at least some minor errors, possibly some major ones.
 A discussion of $E_k$-indecomposables in the language of $\infty$-categories and $\infty$-operads:
 [$E_k$-indecomposables and $E_k$-homology](pdfs/Ekroot.pdf).
 Very rough at the moment, certain to contain a number of errors.
+
+I have a few programming projects on [github](https://github.com/AyeGill)
