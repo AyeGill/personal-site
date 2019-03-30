@@ -18,7 +18,7 @@ A discussion of $E_k$-indecomposables in the language of $\infty$-categories and
 Very rough at the moment, certain to contain a number of errors.
 
 A note on some ideas of Lurie concerning $\infty$-categorical logic:
-[Bounded ultraspaces](pdfs/ultraspaces-essay.pdf)
+[Bounded ultraspaces](pdfs/ultraspaces-essay.pdf). Thanks to Tobias Barthel for putting together the ultraseminar.
 
 I have a few programming projects on [github](https://github.com/AyeGill)
 
