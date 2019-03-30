@@ -31,6 +31,9 @@ main = hakyll $ do
         route idRoute
         compile copyFileCompiler
 
+    match "files/*" $ do
+        route idRoute
+        compile copyFileCompiler
 
 
     match "content/*.tex" $ do -- .tex files get a template with a bunch of commands applied before pandoc.
