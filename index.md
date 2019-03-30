@@ -17,6 +17,9 @@ A discussion of $E_k$-indecomposables in the language of $\infty$-categories and
 [$E_k$-indecomposables and $E_k$-homology](pdfs/Ekroot.pdf).
 Very rough at the moment, certain to contain a number of errors.
 
+A note on some ideas of Lurie concerning $\infty$-categorical logic:
+[Bounded ultraspaces](pdfs/ultraspaces-essay.pdf)
+
 I have a few programming projects on [github](https://github.com/AyeGill)
 
 I have compiled a dataset of about 56.000 decklists for the [Commander/EDH](https://magic.wizards.com/en/content/commander-format) format for Magic: The Gathering. They were scraped from [mtggoldfish](https://www.mtggoldfish.com/). It's possible the data may need some mild sanitizing.
