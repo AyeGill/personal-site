@@ -23,7 +23,9 @@ And so on, and so forth. The result is that the other person leaves with a list 
 Of course, the tradeoff is that people want and need different things from books. Of course experts need something different from novices (a good reference vs a good textbook),
 but different novices need different types of exposition too, and the problem of matching a person to a book in this manner is so difficult you may as well just try different books until one of them works.
 
-My experience with the various math-related parts of the internet mirrors this. Posting "can someone recommend a good introduction to category theory" to reddit or twitter is a good way to find a list of every halfway decent introduction to category theory written in the last 30 years (and a few older ones, probably including Mac Lane itself), but not much else.
+My experience with the various math-related parts of the internet mirrors this. Posting "can someone recommend a good introduction to category theory" to reddit or twitter is a good way to find a list of every halfway decent introduction to category theory written in the last 30 years (and a few older ones, probably including Mac Lane[^1] itself), but not much else.
+
+[^1]: I.e [*Categories for the working mathematician*](https://openlibrary.org/books/OL4770352M/Categories_for_the_working_mathematician)
 
 ## Recommendations
 The following list should be interpreted in light of the preceding discussion.
