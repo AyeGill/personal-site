@@ -1,0 +1,85 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.19)  10 JUN 2017 18:53
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**TopicNotes.tex
+(./TopicNotes.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+./TopicNotes.tex:1: Undefined control sequence.
+l.1 \chapter
+            {Topic Notes}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./TopicNotes.tex:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \chapter{T
+              opic Notes}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no T in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
+[]
+ []
+
+
+./TopicNotes.tex:3: LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 ...{TopicNotes/NumericalLinearAlgebra/SVD/SVD}
+                                                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[1]
+\@input{TopicNotes/NumericalLinearAlgebra/SVD/SVD.aux}
+./TopicNotes.tex:3: I can't write on file `TopicNotes/NumericalLinearAlgebra/SVD/SVD.aux'.
+\@include ...\immediate \openout \@partaux #1.aux 
+                                                  \immediate \write \@partau...
+l.3 ...{TopicNotes/NumericalLinearAlgebra/SVD/SVD}
+                                                  
+(Press Enter to retry, or Control-D to exit; default file extension is `.tex')
+Please type another output file name
+./TopicNotes.tex:3: Emergency stop.
+\@include ...\immediate \openout \@partaux #1.aux 
+                                                  \immediate \write \@partau...
+l.3 ...{TopicNotes/NumericalLinearAlgebra/SVD/SVD}
+                                                  
+*** (job aborted, file error in nonstop mode)
+
+ 
+Here is how much of TeX's memory you used:
+ 9 strings out of 493013
+ 198 string characters out of 6133328
+ 53632 words of memory out of 5000000
+ 3650 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 22i,4n,16p,83b,113s stack positions out of 5000i,500n,10000p,200000b,80000s
+./TopicNotes.tex:3:  ==> Fatal error occurred, no output PDF file produced!

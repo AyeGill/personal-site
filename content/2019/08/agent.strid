@@ -1,0 +1,5 @@
+matrix{
+   text(r)[l,t=#$X$#] & mult(r,rd,l) & & line(l,r)     & & vbox(l,ld,r)[l,t=#$L$#] & text(u)[l,t=#$R$#]\\
+    &             & & vbox(l,r,rd)[l,t=#$A$#] & &              & line(u,d) \\
+    &             & &              & & line(l,r)    & \\
+}

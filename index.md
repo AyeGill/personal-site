@@ -24,3 +24,4 @@ I have a few programming projects on [github](https://github.com/AyeGill)
 
 I have compiled a dataset of about 56.000 decklists for the [Commander/EDH](https://magic.wizards.com/en/content/commander-format) format for Magic: The Gathering. They were scraped from [mtggoldfish](https://www.mtggoldfish.com/). It's possible the data may need some mild sanitizing.
 The set can be found [here](files/decks.zip)
+(I was interested in training a neural network on this data, but it never got off the ground).
