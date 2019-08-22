@@ -17,5 +17,7 @@ A list of some projects/topics I'm thinking about. Please feel free to contact m
 - Studying machine learning using categorical methods.
   - The connection to game theory, sketched out in the final section of [From open learners to open games](https://arxiv.org/abs/1902.08666), seems very exciting.
     - More generally, the diagramattic language developed in these notes might be a useful way of thinking about different ML architectures.
+    - What is a *bayesian open game*?
   - I am also reading [Compositional deep learning](https://arxiv.org/abs/1907.08292)
+  - Could one prove some sort of functorial generalization bound?
 - I would like to write a book or set of notes in the vein of [Concrete Mathematics](https://openlibrary.org/works/OL3951639W/Concrete_mathematics), but covering more abstract methods, i.e category theory, topology, algebra, etc. (so, "Abstract Mathematics"). What I want to take from CM, then, is the expository style, focusing more on methods and problems than on definitions and theorems, and so on.
