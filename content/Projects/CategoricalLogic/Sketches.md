@@ -1,6 +1,6 @@
-Sketches
-========
-
+---
+title: Sketches
+---
 \[Recall the definition of quiver, diagrams in a quiver, cones,
 cocones\]
 

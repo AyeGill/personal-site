@@ -1,6 +1,6 @@
-Categorical Logic and higher generalizations {#Proj:Proj02}
-============================================
-
+---
+title: Categorical Logic and higher generalizations {#Proj:Proj02}
+---
 Overview
 --------
 

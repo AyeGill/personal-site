@@ -1,6 +1,6 @@
-Cellular $E_k$ Algebras
-=======================
-
+---
+title: Cellular $E_k$ Algebras
+---
 Overview / Intro
 ----------------
 
@@ -28,7 +28,7 @@ $\infty$-categorical language.
 
 An important diagram:
 
-![](208655c125111edfef82829170438dd0223f4779.svg)
+![](/images/208655c125111edfef82829170438dd0223f4779.svg)
 
 Søren: "Målet er at forstå hvordan et givet objekt $R \in Alg_n(C)$ kan
 løftes hele vejen til højre, altså hvordan det gives en filtrering

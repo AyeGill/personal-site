@@ -1,6 +1,6 @@
-A compositional framework for reaction networks
-===============================================
-
+---
+title: A compositional framework for reaction networks
+---
 We encounter two types of "process networks"
 
 A *reaction network* consists of:
@@ -60,7 +60,7 @@ reaction networks on $S$).
 Then when composing two "decorated cospans", we first form the pushout
 of sets:
 
-![](847a92130bf031ba2e8d8e07c2aff249b0d83cf2.svg)
+![](/images/847a92130bf031ba2e8d8e07c2aff249b0d83cf2.svg)
 
 This is the cospan underlying the composite. Now we need to build an
 element in $F(S +_Y S')$. To do so, we use the fact that $F$ is a

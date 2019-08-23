@@ -1,6 +1,6 @@
-Complete Segal spaces
-=====================
-
+---
+title: Complete Segal spaces
+---
 We let $I$ be the simplicial set $N(0 \labelto{\sim}1)$.
 
 A *Segal Space* is a bisimplicial set $X : \Delta\op \to \catname{sSet}$

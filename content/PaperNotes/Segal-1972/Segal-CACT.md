@@ -1,5 +1,6 @@
-Segal - Categories and Cohomology theories
-==========================================
+---
+title: Segal - Categories and Cohomology theories
+---
 
 This is [@SegCatCoh]. The paper is about certain structured spaces - not
 quite topological monoids, but *homotopy coherent monoids*. The main
@@ -11,7 +12,7 @@ of a certain type of homotopy coherent structure. We can also recognize
 more concretely the use of forgetful functors that are trivial
 fibrations - for instance, the functor from diagrams of this type:
 
-![](c6dfae8746933deefda97166d729cab1eeea633c.svg)
+![](/images/c6dfae8746933deefda97166d729cab1eeea633c.svg)
 
 Which present $XY$ as the sum of $XY$, to just $\cl{C} \times \cl{C}$,
 which in classifying space becomes a trivial fibration, as encoding the

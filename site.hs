@@ -2,23 +2,36 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Hakyll.Web.Pandoc.Biblio
 import qualified Data.Set as S
 import           Text.Pandoc.Options
+import Control.Monad (liftM)
 
 
-(pandocMathCompiler, renderPandocMath) =
-    let mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
-                          Ext_latex_macros]
-        defaultExtensions = writerExtensions defaultHakyllWriterOptions
-        newExtensions = foldr S.insert defaultExtensions mathExtensions
-        writerOptions = defaultHakyllWriterOptions {
-                          writerExtensions = newExtensions,
-                          writerHTMLMathMethod = MathJax ""
+bibmathCompiler :: String -> String -> Compiler (Item String)
+bibmathCompiler cslFileName bibFileName = do
+    csl <- load $ fromFilePath cslFileName
+    bib <- load $ fromFilePath bibFileName
+    liftM (writePandocWith writerOptions)
+        (getResourceBody >>= readPandocBiblio def csl bib)
+
+mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
+                          Ext_latex_macros, Ext_implicit_figures]
+defaultExtensions = writerExtensions defaultHakyllWriterOptions
+newExtensions = foldr S.insert defaultExtensions mathExtensions
+writerOptions = defaultHakyllWriterOptions {
+                        writerExtensions = newExtensions,
+                        writerHTMLMathMethod = MathJax ""
                         }
-    in (pandocCompilerWith defaultHakyllReaderOptions writerOptions, renderPandocWith defaultHakyllReaderOptions writerOptions)
+renderPandocMath = renderPandocWith defaultHakyllReaderOptions writerOptions
+
+cslfile = "bibliography/bib.csl"
+bibfile = "bibliography/Citations.bib"
+
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    --"loose" files
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -34,6 +47,11 @@ main = hakyll $ do
     match "files/*" $ do
         route idRoute
         compile copyFileCompiler
+    
+    --- Bibliography business
+    match "bibliography/bib.csl" $ compile cslCompiler
+    match "bibliography/Citations.bib" $ compile biblioCompiler
+
 
 
     match "content/*.tex" $ do -- .tex files get a template with a bunch of commands applied before pandoc.
@@ -47,7 +65,7 @@ main = hakyll $ do
 
     match ("content/*.md" .||. "content/*.html") $ do
         route $ setExtension "html"
-        compile $ pandocMathCompiler
+        compile $ bibmathCompiler cslfile bibfile
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -67,10 +85,35 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
+    
+    -- Could also consider approach where we generate top-folder files using templates?
+    match "content/2017.md" $ do
+        route $ setExtension "html"
+        compile $ bibmathCompiler cslfile bibfile
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    match "content/2018.md" $ do
+        route $ setExtension "html"
+        compile $ bibmathCompiler cslfile bibfile
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    match "content/2019.md" $ do
+        route $ setExtension "html"
+        compile $ bibmathCompiler cslfile bibfile
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
+
+    match "content/*/*/*.md" $ do
+        route $ setExtension "html"
+        compile $ bibmathCompiler cslfile bibfile
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= relativizeUrls
 
     match "index.md" $ do
         route $ setExtension "html"
-        compile $ pandocMathCompiler
+        compile $ bibmathCompiler cslfile bibfile
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
     match "contact.md" $ do

@@ -1,6 +1,6 @@
-Trivial algebras
-================
-
+---
+title: Trivial algebras
+---
 `\index{Operad, Trivial algebras, $E_k$-homology}`{=latex} We can
 approach the idea of trivial algebras/$E_k$-homology by trying to define
 an intermediate step of *Trivial algebras with distinguished

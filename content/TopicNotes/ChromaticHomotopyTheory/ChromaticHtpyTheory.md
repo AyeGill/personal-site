@@ -1,6 +1,6 @@
-Survey of chromatic htpy
-========================
-
+---
+title: Survey of chromatic htpy
+---
 See [@BarBea].
 
 Let $\cl{C}$ be a stably symmetric monoidal . Then a subcategory
@@ -49,9 +49,9 @@ maps from things supported above degree $n$.
 Note that one could also have taking the quotient by $C_n$, i.e things
 with support above degree $n$.
 
-Complex orientable cohomology theories
-======================================
-
+---
+title: Complex orientable cohomology theories
+---
 Let $E$ be a cohomology theory, or equivalently a spectrum. So $E$ is a
 functor $E: \cl{H} \to Ab_\Z$, satisfying certain properties. $E$ is
 called multiplicative if it factors through the forgetful functor
@@ -95,9 +95,9 @@ a formal group law, i.e. to satisfy these conditions:
 
 -   $f(u,0) = f(0,u) = u$
 
-Lazard's Theorem
-================
-
+---
+title: Lazard's Theorem
+---
 A formal power series over $R$ in two variables is just a system of
 coefficients $a_{i,j} \in R, i,j\geq 0$. These are classified by maps
 $\Z[x_{i,j} | i,j \geq 0] \to R$. The condition that such a map
@@ -172,9 +172,9 @@ dimension in each graded degree, it must be injective as well.
 
 We are now reduced to giving the proof of the first lemma.
 
-The spectrum MU
-===============
-
+---
+title: The spectrum MU
+---
 In this section, we will study a multiplicative spectrum $MU$ which
 classifies complex orientations, in the sense that there is a bijection
 between maps $MU \to E$ of multiplicative spectra and complex

@@ -1,6 +1,6 @@
-Bachelor Project {#Proj:BachProj}
-================
-
+---
+title: Bachelor Project {#Proj:BachProj}
+---
 Currently contains preliminary notes regarding my bachelor project. Not
 intended to be the location of the final text.
 

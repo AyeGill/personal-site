@@ -1,6 +1,6 @@
-Stable $\infty$-categories
-==========================
-
+---
+title: Stable $\infty$-categories
+---
 An object in an $\infty$-category is called a $0$-object if it's both
 initial and final. An $\infty$-category with a $0$-object is called a
 pointed $\infty$-category.
@@ -87,7 +87,7 @@ diagrams iff they have this property.
 We also need the fact that the coproduct of $0$ and anything exists and
 is that thing. This can be seen by considering this diagram:
 
-![](35774b1193f3bd30ceeeee2f4a4c45775ff9456c.svg)
+![](/images/35774b1193f3bd30ceeeee2f4a4c45775ff9456c.svg)
 
 This is clearly a pullback diagram. By definition, the right map is a
 trivial fibration, hence so is the left. Hence the diagram $x \to x$,

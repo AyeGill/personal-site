@@ -1,6 +1,6 @@
-Singular Value Decomposition
-============================
-
+---
+title: Singular Value Decomposition
+---
 This is taken from [@NumLinAlg].
 
 The singular value decomposition

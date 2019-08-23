@@ -1,6 +1,6 @@
-Fong-Spivak-Tuyéras - Backprop as Functor
-=========================================
-
+---
+title: Fong-Spivak-Tuyéras - Backprop as Functor
+---
 This is about the paper named in the title.
 
 I have written out the definition of the paper's $\Learn$, but in a

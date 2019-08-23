@@ -1,6 +1,6 @@
-Tensor-Triangulated Geometry
-============================
-
+---
+title: Tensor-Triangulated Geometry
+---
 The basic idea is to study "Tensor-triangulated" categories, i.e
 symmetric monoidal triangulated categories where $\tensor$ is exact.
 This is done by means of the *spectrum*, which is a locally ringed space

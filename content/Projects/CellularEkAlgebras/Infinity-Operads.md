@@ -1,6 +1,6 @@
-$\infty$-Operads
-================
-
+---
+title: $\infty$-Operads
+---
 See [@LuHiAlg].
 
 An $\infty$-operad is a functor of $p: \cl{C}^\tensor \to N(Fin_*)$ with

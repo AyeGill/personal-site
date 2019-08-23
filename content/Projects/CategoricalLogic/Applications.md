@@ -1,6 +1,6 @@
-Applications
-============
-
+---
+title: Applications
+---
 Given an index set $I$, an ultrafilter $\cl{F}$, and a collection of
 subset inclusions $A_i \subset B_i$, we obtain a map
 $\prod_{i\in I}^\cl{F} A_i \to \prod_{i\in I}^\cl{F} B_i$ on

@@ -1,6 +1,6 @@
-Decorated Cospans
-=================
-
+---
+title: Decorated Cospans
+---
 Writing about [@Fong15].
 
 We encounter the decorated cospans from [@BP17] (see above).

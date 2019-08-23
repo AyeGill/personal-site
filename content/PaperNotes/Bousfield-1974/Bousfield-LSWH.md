@@ -1,6 +1,6 @@
-Bousfield - Localization of spaces with respect to homology
-===========================================================
-
+---
+title: Bousfield - Localization of spaces with respect to homology
+---
 This is [@BouLocSpc]. I originally wrote this in the journal on
 2017-11-08, so it's duplicated there.
 

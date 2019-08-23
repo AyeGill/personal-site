@@ -1,6 +1,6 @@
-Compactly generated categories
-==============================
-
+---
+title: Compactly generated categories
+---
 Let $\cl{C}$ be an . Then $\cl{C}$ is called *compactly generated* if
 $\cl{C}$ is presentable and generated under filtered colimits by
 $\cl{C}^\omega$.
@@ -171,9 +171,9 @@ receives a map from the "free square" category, is compact, because it
 is equivalent to the "free lower-right corner" category. Hence the
 subspace of pullbacks inside squares is stable under ultraproduct.
 
-SUPERFLUOUS - Approach to the theorem by some ideas of Shulman
-==============================================================
-
+---
+title: SUPERFLUOUS - Approach to the theorem by some ideas of Shulman
+---
 We say a map $X \to Y$ in a general $\cl{C}$ is a monomorphism if
 $$\Map(A,X) \to \Map(A,Y)$$ is a equivalent to the inclusion of a subset
 of the connected components in $\Map(A,Y)$.

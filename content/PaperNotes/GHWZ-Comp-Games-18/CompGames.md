@@ -1,6 +1,6 @@
-Compositional Game Theory
-=========================
-
+---
+title: Compositional Game Theory
+---
 Concerning [@GHWZ18]
 
 Define a category of *open games*. The objects are pairs of sets
