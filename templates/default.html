@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/css/default.css" />
     </head>
     <body>
-        <p>
+        <div style="visibility: hidden">
             \(\newcommand{\R}{\mathbb{R}}
             \newcommand{\Z}{\mathbb{Z}}
             \newcommand{\Q}{\mathbb{Q}}
@@ -107,13 +107,17 @@
             \DeclareMathOperator{\Map}{Map}
             \DeclareMathOperator{\Fun}{Fun}
             \DeclareMathOperator{\Hom}{Hom}
+            \DeclareMathOperator{\CAlg}{CAlg}
             
             \DeclareMathOperator{\Alg}{Alg}
             \DeclareMathOperator{\Id}{Id}
             \DeclareMathOperator{\Spec}{Spec}
+            \DeclareMathOperator{\cofib}{cofib}
+            \DeclareMathOperator{\fib}{fib}
             \DeclareMathOperator{\colim}{colim}
             \DeclareMathOperator{\hocolim}{hocolim}
-            
+            \newcommand{\braket}[1]{\langle #1 \rangle}
+            \newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
             \DeclareMathOperator{\gr}{gr}
             \DeclareMathOperator{\Cat}{\cl{C}at}
             \DeclareMathOperator{\Sp}{Sp}
@@ -122,7 +126,16 @@
             \DeclareMathOperator{\Set}{Set}
             \DeclareMathOperator{\sSet}{sSet}
             \DeclareMathOperator{\Fin}{Fin}
-            
+            \DeclareMathOperator{\Mod}{Mod}
+            \DeclareMathOperator{\stab}{stab}
+            \DeclareMathOperator{\Stone}{Stone}
+            \DeclareMathOperator{\Meas}{Meas}
+            \DeclareMathOperator{\CHaus}{CHaus}
+            \DeclareMathOperator{\ev}{ev}
+            \DeclareMathOperator{\Ult}{Ult}
+            \DeclareMathOperator{\LUlt}{LUlt}
+            \DeclareMathOperator{\Pyk}{Pyk}
+
             \newcommand{\ol}{\overline}
             \newcommand{\osum}{\bigoplus}
             \newcommand{\tensor}{\otimes}
@@ -130,7 +143,7 @@
             \newcommand{\popr}{\boxempty}
             \newcommand{\from}{\leftarrow}
             
-            
+            \newcommand{\labelto}[1]{\overset{#1}{\to}}
             
             \let\oldphi\phi
             \let\oldepsilon\epsilon
@@ -176,7 +189,7 @@
             \newcommand{\BBC}{{\mathbb C}}
             \newcommand{\BBR}{{\mathbb R}}
             \newcommand{\BBU}{{\mathbb U}}
-            \newcommand{\BBX}{{\mathbb X}}\)</p>
+            \newcommand{\BBX}{{\mathbb X}}\) </div>
             
 
         <div id="header">
