@@ -3,12 +3,40 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
         type="text/javascript"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/sidenotes.js" async=""></script>
+
+<style id="sidenotes-browser-workaround">
+    @supports (-moz-user-focus: normal) {
+        @media only screen and (max-width: 1408px) {
+            #sidenote-column-left,
+            #sidenote-column-right {
+                display: none;
+            }
+        }
+        @media only screen and (min-width: 1409px) {
+            main {
+                position: relative;
+                right: 4ch;
+            }
+            #markdownBody {
+                position: relative;
+            }
+        }
+        @media only screen and (max-width: 1408px) {
+            .footnote-ref:target {
+                background-color: inherit;
+                box-shadow: none;
+            }
+        }
+    }
+</style>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Eigil Fjeldgren Rischel - $title$</title>
-        <link rel="stylesheet" type="text/css" href="/css/default.css" />
+        <link rel="stylesheet" type="text/css" href="/css/gwern.css" />
     </head>
     <body>
         <div style="visibility: hidden">
@@ -117,6 +145,7 @@
             \DeclareMathOperator{\colim}{colim}
             \DeclareMathOperator{\hocolim}{hocolim}
             \newcommand{\braket}[1]{\langle #1 \rangle}
+            \newcommand{\ang}{\braket}
             \newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
             \DeclareMathOperator{\gr}{gr}
             \DeclareMathOperator{\Cat}{\cl{C}at}
@@ -135,6 +164,7 @@
             \DeclareMathOperator{\Ult}{Ult}
             \DeclareMathOperator{\LUlt}{LUlt}
             \DeclareMathOperator{\Pyk}{Pyk}
+            \DeclareMathOperator{\Triv}{Triv}
 
             \newcommand{\ol}{\overline}
             \newcommand{\osum}{\bigoplus}
@@ -163,6 +193,7 @@
             \newcommand{\myNorm}[2]{
             \left\|#1\right\|_{#2}
             }
+            
             
             
             \newcommand{\vect}[1]{\overset{\rightharpoonup}{#1}}
@@ -203,7 +234,7 @@
             </div>
         </div>
 
-        <div id="content">
+        <div id="markdownBody">
             $if(title)$
             <h1>$title$</h1>
             $endif$

@@ -75,9 +75,9 @@ The functor
 $\Cat_\infty \to \Fun^{cart}((\Cat_\infty^\omega)\op, \cl{S})$ is an
 equivalence of .
 
-In other words, an `\icat `{=latex}is determined by its functor spaces
-from "essentially small" `\icats`{=latex}, and in order for such an
-assembly of functor spaces to come from an actual `\icat`{=latex}, it
+In other words, an $\infty$-category is determined by its functor spaces
+from "essentially small" $\infty$-categories , and in order for such an
+assembly of functor spaces to come from an actual $\infty$-category , it
 suffices that they preserve limits (i.e map colimits to limits).
 
 We denote by $\Cat_\infty(\omega)$ the subcategory of $\Cat_\infty$

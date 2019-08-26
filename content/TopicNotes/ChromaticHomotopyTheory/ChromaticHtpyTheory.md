@@ -20,7 +20,7 @@ $B \in \cl{D}$, and if $\cl{D}$ is a proper subcategory, we say that
 $\cl{D}$ is a *prime*.
 
 Studying the system (the *spectrum*) of primes in a stable symmetric
-monoidal `\icat `{=latex}is the subject of tensor-triangulated geometry,
+monoidal $\infty$-category is the subject of tensor-triangulated geometry,
 an idea due to Balmer.
 
 If we calculate this for *the* stable category, after $p$-localizing, we

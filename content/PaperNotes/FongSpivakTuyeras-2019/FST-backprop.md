@@ -88,7 +88,7 @@ Some scattered thoughts:
     come back in the example on weight tying, where the parameter is
     "factored out" as an input.
 
--   Everything should be probabilistic. `\todo{Work this out}`{=latex}
+-   Everything should be probabilistic
 
 Idea for Bayesian learner:
 
@@ -137,7 +137,9 @@ implementation is clearly the same. The request/update of this composite
 is given by taking $(p,a,b)$, using the identity on $a$ and reading off
 the $p\in P$ to get $(p,p,a,b)$, then using the request of $d$ on
 $(p,a,b)$ to obtain a new $(p',a')$. This is precisely the
-request/update of $F$. `\todo{Draw some diagrams here?}`{=latex}
+request/update of $F$.
+
+[todo]: # Draw some diagrams here?
 
 Gradient descent and backpropagation
 ------------------------------------

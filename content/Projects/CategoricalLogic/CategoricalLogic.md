@@ -5,8 +5,8 @@ Overview
 --------
 
 In [@BSS], Barthel-Schlank-Stapleton develop a notion of *ultraproducts*
-for arbitrary `\icats `{=latex}with products and filtered colimits, and
-exhibit certain equivalences of ultraproducts of `\icats `{=latex}which
+for arbitrary $\infty$-categories with products and filtered colimits, and
+exhibit certain equivalences of ultraproducts of $\infty$-categories which
 are important in chromatic homotopy theory.
 
 One motivation for why this is interesting, is the ultraproduct theorem
@@ -61,16 +61,16 @@ But (following how this works in traditional categorical logic) this
 would require us to identify
 
 1.  Some pretopos $\cl{P}$ so that pretopos morphisms
-    $\cl{P} \to \cl{S}$ can be identified with `\icats`{=latex}.
+    $\cl{P} \to \cl{S}$ can be identified with $\infty$-categories .
 
 2.  Some morphism $C \to S$ in $\cl{P}$ so that, for each
-    `\icat `{=latex}$F: \cl{C} \to \cl{S}$, $F(C) \to F(S)$ is the
+    $\infty$-category $F: \cl{C} \to \cl{S}$, $F(C) \to F(S)$ is the
     inclusion of "the space of pullback diagrams" in "the space of
     square diagrams".
 
 It is not clear how to build such a theory - indeed, if
 $\Fun^{\mathrm{pretopos}}(\cl{P},\cl{S}) \simeq \Cat_\infty$, then it is
-not hard to see that step 2 is impossible. Building such a theory is one
+not hard to see that step 2 is impossible (since not all functors of $\infty$-categories preserve pullbacks). Building such a theory is one
 of the goals of this project.
 
 ### Problems / to do / remarks

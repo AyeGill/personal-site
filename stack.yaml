@@ -6,9 +6,10 @@ resolver: lts-4.1
 # Local packages, usually specified by relative directory name
 packages:
 - '.'
-
 # Packages to be pulled from upstream that are not in the resolver (e.g., acme-missiles-0.3)
-extra-deps: []
+extra-deps:
+  - bibtex-0.1.0.6
+  - latex-0.1.0.4
 
 # Override default flag values for local packages and extra-deps
 flags: {}

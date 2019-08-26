@@ -1,7 +1,8 @@
 ---
 title: Trivial algebras
+tags: Operad, Trivial algebras, $E_k$-homology
 ---
-`\index{Operad, Trivial algebras, $E_k$-homology}`{=latex} We can
+We can
 approach the idea of trivial algebras/$E_k$-homology by trying to define
 an intermediate step of *Trivial algebras with distinguished
 $0$-morphisms*.
@@ -53,7 +54,7 @@ $$(\braket{1},\braket{1}^\circ) \mapsto 0 \in \cl{C}_{\braket{1}} \simeq \cl{C}$
 
 Then we have the following conjecture: the composition
 $$\widetilde{\Alg_{Triv^+}(\cl{C})} \to \Alg_{Triv^+}(\cl{C}) \to \Alg_{Triv}(\cl{C}) \simeq \cl{C}$$
-is an equivalence of `\icats`{=latex}.
+is an equivalence of $\infty$-categories .
 
 $\Triv^+$ is an $\infty$-operad.
 
@@ -116,19 +117,19 @@ $$\tilde{\Alg}_{\Triv^+}\cl{C} \subseteq \Alg_{\Triv^+}\cl{C}$$ to be
 the full subcategory spanned by those $\Triv^+$-algebras $A$ where
 $A(0)$ is a zero object.
 
-[\[thm:trivial-algebras\]]{#thm:trivial-algebras
-label="thm:trivial-algebras"} The composition
+### Conjecture
+
+The composition
 $$\tilde{\Alg}_{\Triv^+}\cl{C} \into \Alg_{\Triv^+}\cl{C} \to \Alg_{\Triv}\cl{C} \simeq \cl{C}$$
 is an equivalence of .
 
 Probably easiest to consider
 $\tilde{\Alg}_{\Triv^+}\cl{C} \to \Alg_{\Triv}\cl{C}$.
 
-Consequences of `\ref{thm:trivial-algebras}`{=latex}
+Consequences of the conjecture
 ----------------------------------------------------
 
-In this subsection, we assume that `\ref{thm:trivial-algebras}`{=latex}
-is true.
+In this subsection, we assume that the above conjecture is true
 
 For each pointed symmetric monoidal category, and each
 $1 \leq k \leq \infty$ $\cC$, we let
