@@ -1099,7 +1099,7 @@ article > :not(#TOC) a:hover {
 /*  Internal (within-site) links.
     */
 #markdownBody a[href^="."]::after,
-#markdownBody a[href^="https://www.gwern.net/"]::after {
+#markdownBody a[href^="https://www.efr-personal.net/"]::after {
     content: "\1D50A";
     margin: 0 0 0 2px;
     vertical-align: baseline;

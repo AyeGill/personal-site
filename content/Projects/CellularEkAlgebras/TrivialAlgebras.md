@@ -9,29 +9,26 @@ $0$-morphisms*.
 
 Define $Triv^+$ to be the following category:
 
-1.  The objects of $Triv^+$ are pairs $(\braket{n}, Z)$, where
+1. The objects of $Triv^+$ are pairs $(\braket{n}, Z)$, where
     $Z \subseteq \braket{n}^\circ$. We think of the point in $Z$ as
     being sent to zero, as opposed to the underlying object of the
     algebra.
+2. A morphism $f: (\braket{n}, Z) \to (\braket{m}, Z')$ consists of
+    - A pointed function $f: \braket{n} \to \braket{m}$
 
-2.  A morphism $f: (\braket{n}, Z) \to (\braket{m}, Z')$ consists of
-
-    -   A pointed function $f: \braket{n} \to \braket{m}$
-
-    -   A subset $T \subseteq \braket{m}^\circ$ (those coordinates where
+    - A subset $T \subseteq \braket{m}^\circ$ (those coordinates where
         the morphism equals/factors over zero).
 
-    -   Such that $Z' \cup f(Z) \subseteq T$
+    - Such that $Z' \cup f(Z) \subseteq T$
 
-    -   Such that for $i\in Z$, $f\inv(\{f(i)\})$ is a singleton (we
+    - Such that for $i\in Z$, $f\inv(\{f(i)\})$ is a singleton (we
         never define operations like $X \tensor 0 \to X$). (This may be
         unnecessary)?
 
-    -   And moreover so that, for $i \notin T, i \neq *$, $f\inv(i)$ is
+    - And moreover so that, for $i \notin T, i \neq *$, $f\inv(i)$ is
         a singleton. (We only ever define zero operations and
         identities).
-
-3.  Given
+3. Given
     $f,T: (\braket{n},Z) \to (\braket{m},Z'), g,S: (\braket{m},Z') \to (\braket{r},Z'')$,
     the composition is $g\circ f, S \cup g(T)$.
 
@@ -62,11 +59,11 @@ Since the map $p: \Triv^+ \to \Fin_*$ is (the nerve of) a $1$-functor,
 it is automatically an inner fibration. So we must verify two
 conditions:
 
-1.  Given $f: \braket{n} \to \braket{m} \in \Fin_*$ inert and
+1. Given $f: \braket{n} \to \braket{m} \in \Fin_*$ inert and
     $A \in \Triv^+_{\braket{n}}$, there exists a $p$-coCartesian lift
     $\tilde{f}: A \to B$.
 
-2.  The functor $\Triv^+_{\braket{n}} \to \prod_n \Triv^+_{\braket{1}}$
+2. The functor $\Triv^+_{\braket{n}} \to \prod_n \Triv^+_{\braket{1}}$
     is an equivalence.
 
 For 1., let $f$ and $A = (\braket{n},Z)$ be as given. Then we put

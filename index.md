@@ -2,7 +2,7 @@
 title: Home
 ---
 
-Welcome to my page.[^1]
+Welcome to my page.
 
 Currently, I am studying a master's degee (cand.scient) in mathematics at the [University of Copenhagen](https://www.math.ku.dk/english).
 
@@ -26,4 +26,4 @@ I have compiled a dataset of about 56.000 decklists for the [Commander/EDH](http
 The set can be found [here](files/decks.zip)
 (I was interested in training a neural network on this data, but it never got off the ground).
 
-[^1]: I am testing footnotes
+Look at [projects](/content/projects.html) for more things I'm working on.

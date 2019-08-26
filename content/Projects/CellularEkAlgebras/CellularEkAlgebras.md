@@ -46,11 +46,11 @@ We also suppose that there is precisely one rank $1$ object, $\sigma$
 (up to equivalence, but whatever).
 
 Note first that $r$ induces an adjunction
-$$\adjunction{r_*}{\sSet^{G}}{\sSet^{\N_0}}{r^*}$$ (for formal reasons),
+$${r_*}:{\sSet^{G}}\rightleftharpoons{\sSet^{\N_0}}:{r^*}$$ (for formal reasons),
 where $r_*$ is left Kan extension.
 
 This can be upgraded to an adjunction
-$$\adjunction{r_*}{\Alg_{E_k}(\sSet^G)}{\Alg_{E_k}(\sSet^{\N_0})}{r^*}$$
+$${r_*}:{\Alg_{E_k}(\sSet^G)}\rightleftharpoons{\Alg_{E_k}(\sSet^{\N_0})}:{r^*}$$
 
 There is some question here about unital vs non-unital algebras.
 
@@ -93,11 +93,11 @@ Let the following input be given:
 
 Then we do the following:
 
-We have an adjunction $$\adjunction{r_*}{\S^{G}}{\S^{\N_0}}{r^*}$$ by
+We have an adjunction $${r_*}:{\S^{G}}\rightleftharpoons{\S^{\N_0}}:{r^*}$$ by
 formal nonsense, (the categories are presentable, for instance).
 
 This upgrades to an adjunction[^1]
-$$\adjunction{r_*}{\Alg_{E_k}(\S^G)}{\Alg_{E_k}(\S^{\N_0})}{r^*}$$
+$${r_*}:{\Alg_{E_k}(\S^G)}\rightleftharpoons{\Alg_{E_k}(\S^{\N_0})}:{r^*}$$
 
 [^1]: To do: Why is this true?
 
@@ -111,18 +111,18 @@ Now we first observe that $\Sigma^\infty : \S \to \Sp$ and
 $- \tensor Hk: \Sp \to D(k)$ induce symmetric monoidal functors
 $$\Sigma^\infty: \S^C \to \Sp^C$$ $$- \tensor Hk: \Sp^C \to D(k)^C$$ for
 any
-$C$[^2]
+$C$[^3]
 since $H_k$ is an $E_\infty$-algebra, and hence we can define
 $R_k \in D(k)^{\N_0}$ to be the image of $R$ under this composition.
 
-[^2]: I am not completely sure $D(k)$ is the right thing.
+[^3]: I am not completely sure $D(k)$ is the right thing.
 
 Now the $\sigma$ from the input defines a class in
-$H_0(G_\mathbb{1},k) = \pi_0(R_k(1))$[^3], and hence a
+$H_0(G_\mathbb{1},k) = \pi_0(R_k(1))$[^4], and hence a
 map $S^0 \to \Omega^\infty R_k(1)$. This can be thought of as a map
 $\Sigma^\infty S^{1,0} \to R_k$, where $S^{i,j}$ is a graded space with
 a single copy of $S^j$ in degree $i$.
-[^4]:
+
 This defines a map
 $$S^{1,0} \tensor R_k \to R_k \tensor R_k \labelto{\mu} R_k$$ where
 $\mu$ is the multiplication, and now we can define $R_k/\sigma$ to be
@@ -138,7 +138,6 @@ tensoring with $\sigma$ and $F_k$ is free $k$-module functor as above.
 But the homology (really the homotopy groups) of this cofiber is
 precisely the relative homology in question[^5]
 
-[^3]: Also something to check.
 
 [^4]: There's something to check here about interaction between grading and $\Sigma/\Omega$ being trivial.
 
@@ -216,7 +215,7 @@ Indecomposables
 
 Assume $\cl{C}$ has at least a terminal object $\ast$ Recall the
 *basepoint monad*, $+$, which corresponds to the monadic adjunction
-$$\adjunction{F_+}{\cl{C}}{\cl{C}_\ast}{U_+}$$ With
+$${F_+}:{\cl{C}}\rightleftharpoons{\cl{C}_\ast}:{U_+}$$ With
 $\cl{C}_\ast = \cl{C}_{/\ast}$, $F_+(X) = \ast \into X \coprod \ast$,
 and $U_+$ the obvious forgetful functor.
 
@@ -226,8 +225,8 @@ The change-of-monads adjunction corresponding to this is the
 *indecomposables* functor $Q^T : \Alg_T(\cl{C}) \to \cl{C}_\ast$
 
 The maps of monads $$\Id \to T \to +$$ induce adjunctions
-$$\adjunction{F^T}{\cl{C}}{\Alg_T(\cl{C})}{U^T}$$
-$$\adjunction{Q^T}{\Alg_T(\cl{C})}{\cl{C}_\ast}{Z^T}$$
+$${F^T}:{\cl{C}}\rightleftharpoons{\Alg_T(\cl{C})}: {U^T}$$
+$${Q^T}:{\Alg_T(\cl{C})}\rightleftharpoons{\cl{C}_\ast}:{Z^T}$$
 
 This gives a reflexive coequalizer
 
