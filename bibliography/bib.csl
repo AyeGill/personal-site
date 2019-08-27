@@ -60,13 +60,6 @@
   <macro name="access">
     <text variable="DOI" prefix="doi:"/>
   </macro>
-  <macro name="Arxiv link">
-    <choose>
-      <if match="any" variable="URL">
-        <text variable="URL"/>
-      </if>
-    </choose>
-  </macro>
   <citation collapse="citation-number">
     <sort>
       <key variable="citation-number"/>

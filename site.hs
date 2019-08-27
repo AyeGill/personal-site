@@ -18,7 +18,7 @@ bibmathCompiler cslFileName bibFileName = do
     csl <- load $ fromFilePath cslFileName
     bib <- load $ fromFilePath bibFileName
     body <- getResourceBody
-    pandoc <- readPandocBiblio def csl bib body
+    pandoc <- readPandocBiblio readerOptions csl bib body
     pandocTikz <- withItemBody buildTikz pandoc
     return $ writePandocWith writerOptions $ pandocTikz
 
@@ -30,6 +30,9 @@ writerOptions = defaultHakyllWriterOptions {
                         writerExtensions = newExtensions,
                         writerHTMLMathMethod = MathJax ""
                         }
+readerOptions = defaultHakyllReaderOptions {
+    readerExtensions = newExtensions
+}
 renderPandocMath = renderPandocWith defaultHakyllReaderOptions writerOptions
 
 cslfile = "bibliography/bib.csl"

@@ -1,5 +1,5 @@
 ---
-title: Algebraic Topology: Common Theorems
+title: 'Algebraic Topology: Common Theorems'
 ---
 Homology
 --------
