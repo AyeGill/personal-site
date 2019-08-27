@@ -17,6 +17,15 @@
 /* GENERAL */
 /***********/
 
+embed {
+    width: 50%;
+    height: auto;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 html {
     padding: 0;
     margin: 0;

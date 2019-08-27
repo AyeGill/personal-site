@@ -1,6 +1,7 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
+import Data.ByteString.Lazy.Char8 (pack, unpack)
+import qualified Network.URI.Encode as URI (encode)
 import           Hakyll
 import           Hakyll.Web.Pandoc.Biblio
 import qualified Data.Set as S
@@ -18,12 +19,13 @@ bibmathCompiler cslFileName bibFileName = do
     bib <- load $ fromFilePath bibFileName
     body <- getResourceBody
     pandoc <- readPandocBiblio def csl bib body
-    return $ writePandocWith writerOptions $ pandoc
+    pandocTikz <- withItemBody buildTikz pandoc
+    return $ writePandocWith writerOptions $ pandocTikz
 
 mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
                           Ext_latex_macros, Ext_implicit_figures]
 defaultExtensions = writerExtensions defaultHakyllWriterOptions
-newExtensions = foldr S.insert defaultExtensions mathExtensions
+newExtensions = foldr enableExtension defaultExtensions mathExtensions
 writerOptions = defaultHakyllWriterOptions {
                         writerExtensions = newExtensions,
                         writerHTMLMathMethod = MathJax ""
@@ -110,7 +112,6 @@ main = hakyll $ do
         compile $ bibmathCompiler cslfile bibfile
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
-
     match "content/2019.md" $ do
         route $ setExtension "html"
         compile $ bibmathCompiler cslfile bibfile
@@ -147,83 +148,24 @@ postCtx =
 pdfCtx :: Context CopyFile
 pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
 
+--- Pandoc filters for tikz stuff
+pdfify :: String -> Attr -> String -> Compiler Block
+pdfify tmpl attr contents =
+    (imageBlock . ("data:image/svg+xml;utf8," ++) . URI.encode . filter (/= '\n') . itemBody <$>) $
+    makeItem contents
+     >>= loadAndApplyTemplate (fromFilePath tmpl) (bodyField "body")
+     >>= withItemBody (return . pack 
+                       >=> unixFilterLBS "rubber-pipe" ["--pdf"] 
+                       >=> unixFilterLBS "pdftocairo" ["-svg", "-", "-"] 
+                       >=> return . unpack)
+  where imageBlock fname = Para [Image attr [] (fname, "")]
 
---- PANDOC SITENOTE CONTENT
+tikzFilter :: Block -> Compiler Block 
+tikzFilter (CodeBlock (id, "tikzpicture":extraClasses, namevals) contents) = pdfify "templates/tikzpicture.tex" attr contents
+    where attr = (id, "tikspicture":extraClasses, namevals)
+tikzFilter (CodeBlock (id, "tikzcd":extraClasses, namevals) contents) = pdfify "templates/tikzcd.tex" attr contents
+    where attr = (id, "tikspicture":extraClasses, namevals)
+tikzFilter x = return x
 
-getFirstStr :: [Inline] -> Maybe String
-getFirstStr []                 = Nothing
-getFirstStr (Str text:_      ) = Just text
-getFirstStr (_       :inlines) = getFirstStr inlines
-
-newline :: [Inline]
-newline = [LineBreak, LineBreak]
-
--- This could be implemented more concisely, but I think this is more clear.
-getThenIncr :: State Int Int
-getThenIncr = do
-  i <- get
-  put (i + 1)
-  return i
-
--- Extract inlines from blocks
-coerceToInline :: [Block] -> [Inline]
-coerceToInline = concatMap deBlock . walk deNote
- where
-  deBlock :: Block -> [Inline]
-  deBlock (Plain     ls    ) = ls
-  -- Simulate paragraphs with double LineBreak
-  deBlock (Para      ls    ) = ls ++ newline
-  -- See extension: line_blocks
-  --deBlock (LineBlock lss   ) = intercalate [LineBreak] lss ++ newline
-  -- Pretend RawBlock is RawInline (might not work!)
-  -- Consider: raw <div> now inside RawInline... what happens?
-  deBlock (RawBlock fmt str) = [RawInline fmt str]
-  -- lists, blockquotes, headers, hrs, and tables are all omitted
-  -- Think they shouldn't be? I'm open to sensible PR's.
-  deBlock _                  = []
-
-  deNote (Note _) = Str ""
-  deNote x        = x
-
-filterInline :: Inline -> State Int Inline
-filterInline (Note blocks) = do
-  -- Generate a unique number for the 'for=' attribute
-  i <- getThenIncr
-
-  -- Note has a [Block], but Span needs [Inline]
-  let content  = coerceToInline blocks
-
-  -- The '{-}' symbol differentiates between margin note and side note
-  let nonu     = getFirstStr content == Just "{-}"
-  let content' = if nonu then tail content else content
-
-  let labelCls = "margin-toggle" ++ (if nonu then "" else " sidenote-number")
-  let labelSym = if nonu then "&#8853;" else ""
-  let labelHTML =
-        "<label for=\"sn-"
-          ++ show i
-          ++ "\" class=\""
-          ++ labelCls
-          ++ "\">"
-          ++ labelSym
-          ++ "</label>"
-  let label = RawInline (Format "html") labelHTML
-
-  let inputHTML =
-        "<input type=\"checkbox\" id=\"sn-"
-          ++ show i
-          ++ "\" "
-          ++ "class=\"margin-toggle\"/>"
-  let input             = RawInline (Format "html") inputHTML
-
-  let (ident, _, attrs) = nullAttr
-  let noteTypeCls       = if nonu then "marginnote" else "sidenote"
-  let note              = Span (ident, [noteTypeCls], attrs) content'
-
-  return $ Span nullAttr [label, input, note]
-
-filterInline inline = return inline
-
-usingSideNotes :: Pandoc -> Pandoc
-usingSideNotes (Pandoc meta blocks) =
-  Pandoc meta (evalState (walkM filterInline blocks) 0)
+buildTikz :: Pandoc -> Compiler Pandoc
+buildTikz = walkM tikzFilter

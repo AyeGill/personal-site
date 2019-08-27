@@ -6,11 +6,13 @@ cabal-version:      >= 1.10
 executable site
   main-is:          site.hs
   build-depends:    base == 4.*
-                  , hakyll == 4.7.*
-                  , containers == 0.5.*
-                  , pandoc == 1.15.*
-                  , pandoc-types == 1.12.*
+                  , hakyll >= 4.7.5.2
+                  , containers >= 0.5.11.0
+                  , pandoc >= 1.15.2.1
+                  , pandoc-types == 1.17.*
                   , mtl == 2.2.*
+                  , bytestring == 0.10.*
+                  , uri-encode == 1.5.*
                   , parsec == 3.1.*
                   , bibtex == 0.1.*
   ghc-options:      -threaded

@@ -5,22 +5,15 @@
 
 packages:
 - completed:
-    hackage: bibtex-0.1.0.6@sha256:3ce2181b6840115c42fab2eb17175c76d304af63222bd525d9058ff33f12fd80,3998
+    hackage: hakyll-4.12.5.2@sha256:435eec729639a4bf0d58f3c7c71929600f4130f10241275d5e7df856cc8aae90,8677
     pantry-tree:
-      size: 771
-      sha256: f3b8c71bde545d4e1d76a1bfa190042b8c49611d676260856196ebb14df595c9
+      size: 7631
+      sha256: bd0cbe9051fae2b109d4b8955fd55a710b61c5dfd8b132d444c72c8f9e65c855
   original:
-    hackage: bibtex-0.1.0.6
-- completed:
-    hackage: latex-0.1.0.4@sha256:f424cdaa8b12f8c71e9d70a91141f9209883ac3eef8d2afccbab3298048a1925,1303
-    pantry-tree:
-      size: 218
-      sha256: 1b2b931db2d0e1c3adf60994d346285254250b4bf58617adb50d1164e909a076
-  original:
-    hackage: latex-0.1.0.4
+    hackage: hakyll-4.12.5.2
 snapshots:
 - completed:
-    size: 358076
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/4/1.yaml
-    sha256: 9ec48b83c193da1d86ec4321c4d6b76c6ed25edd49af50018e6cffc393f654d9
-  original: lts-4.1
+    size: 523454
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/2.yaml
+    sha256: 593deeb8366fd69b9e3b7611759ecee87d0d76c08c2ba363b38b7fb119e9fc22
+  original: lts-14.2
