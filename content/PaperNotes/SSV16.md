@@ -23,6 +23,8 @@ If we augment the operad by labeling each arrow with an object of $\cC$, a monoi
 
 [^1]: This perspective is also developed in [@FS18HypergraphCats], for *hypergraph categories*
 
-Note that "wiring diagram algebras" are also categories, since there is a given wiring diagram with two boxes next to each other (giving composition), and a wiring diagram which is just a wire, giving identities. It may be possible to prove some sort of coherence theorem stating that they are equivalent.
+Note that "wiring diagram algebras" are almost categories, since the wiring diagram with two boxes in sequence gives a composition.
+However, the models considered in the paper lack identities - the reason for this is that there is no identity open dynamical system.
+Hence the extra generality of the wiring diagram approach seems to be really necessary.
 
 

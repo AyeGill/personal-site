@@ -37,7 +37,7 @@ html {
     font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
 }
 body {
-    max-width: 112ch;
+    max-width: 100ch;
 }
 @media only screen and (max-width: 64.9ch) {
     html {
@@ -1109,7 +1109,7 @@ article > :not(#TOC) a:hover {
     */
 #markdownBody a[href^="."]::after,
 #markdownBody a[href^="https://www.efr-personal.net/"]::after {
-    content: "\1D50A";
+    content: "";
     margin: 0 0 0 2px;
     vertical-align: baseline;
     position: relative;

@@ -168,7 +168,7 @@ function ridiculousWorkaroundsForBrowsersFromBizarroWorld() {
 					}
 				}
 				@media only screen and (max-width: ${viewportWidthBreakpointInPixels}px) {
-					.footnoteRef:target {
+					.footnote-ref:target {
 						background-color: inherit;
 						box-shadow: none;
 					}
@@ -707,7 +707,7 @@ function constructSidenotes() {
 		*/
 	GW.sidenotes.sidenoteDivs = [ ];
 	//	The footnote references (citations).
-	GW.sidenotes.footnoteRefs = Array.from(document.querySelectorAll("a.footnoteRef"));
+	GW.sidenotes.footnoteRefs = Array.from(document.querySelectorAll("a.footnote-ref"));
 	for (var i = 0; i < GW.sidenotes.footnoteRefs.length; i++) {
 		//	Create the sidenote outer containing block...
 		let sidenote = document.createElement("div");
