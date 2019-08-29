@@ -27,4 +27,26 @@ Note that "wiring diagram algebras" are almost categories, since the wiring diag
 However, the models considered in the paper lack identities - the reason for this is that there is no identity open dynamical system.
 Hence the extra generality of the wiring diagram approach seems to be really necessary.
 
+::: Definition :::
+
+Given a category $\cC$, we let $\mathbf{TFS}_\cC$ denote the category of *$\cC$-typed finite sets*, i.e finite sets equipped with a map to $\mathrm{ob} \cC$.
+(note that this does not involve the category structure of $\cC$)
+
+Note that this category has finite coproducts. Moreover, any functor $\cC \to \cD$ induces a functor
+$\mathbf{TFS}_\cC \to \mathbf{TFS}_\cD$ by composing with the action of the functor on objects.
+Equipping $\mathbf{TFS}_\cC$ with the coCartesian monoidal structure, we construct a functor
+$\mathbf{TFS}_{(-)}: \mathbf{Cat} \to \mathbf{SMC}$, from the category of categories to the category of symmetric monoidal categories and strong symmetric monoidal functors.
+
+Suppose $\cC$ has finite products. Given $(X,\tau) \in \mathbf{TFS}_\cC$, we can form the product
+$\prod_{x\in X} \tau(x) =: \hat{X}$.
+
+This construction gives a functor $\hat{(-)}: \mathbf{TFS}_\cC \to \cC$.
+:::
+
+In fact, more is true: if we let $\mathbf{FPCat}$ denote the category of categories with finite products and functors that preserve them, we obtain a diagram:
+
+```tikzcd
+& \mathbf{Cat} \ar[rd, bend left=30] & \\
+\mathbf{FPCat} \ar[rr, draw=none, bend left=60, ""{name=U,above}] \ar[rr, bend right=60, ""{name=D, below}], \ar[ru, bend left=30]& & \mathbf{SMC}\ar[from=U, to=D, "T", shorten <=10pt,shorten >=10pt, Rightarrow]
+```
 

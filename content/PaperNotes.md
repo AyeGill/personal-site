@@ -8,4 +8,4 @@ title: Paper Notes
 - [Fong-Spivak: Hypergraph Categories](PaperNotes/FongSpivakHypergraph18/HypergraphCategories.html)
 - [Ghani-Hedges-Viktor Winschel-Zahn: Compositional Game Theory](PaperNotes/GHWZ-Comp-Games-18/CompGames.html)
 - [Fong: Decorated Cospans](PaperNotes/Fong15/DecoratedCospans.html)
-- [Schultz - Spivak - Vasilakopulou: Dynamical systems and sheaves](/contents/PaperNotes/SSV16.html)
+- [Schultz - Spivak - Vasilakopulou: Dynamical systems and sheaves](PaperNotes/SSV16/SSV16.html)

@@ -11,7 +11,14 @@ import           Data.List           (intercalate)
 import           Control.Monad.State
 import           Text.Pandoc.JSON
 import           Text.Pandoc.Walk    (walk, walkM)
+import qualified Data.Char as Char
 
+lowercased :: String -> String
+lowercased = map Char.toLower
+
+capitalized :: String -> String
+capitalized (head:tail) = Char.toUpper head : lowercased tail
+capitalized [] = []
 
 bibmathCompiler :: String -> String -> Compiler (Item String)
 bibmathCompiler cslFileName bibFileName = do
@@ -19,8 +26,8 @@ bibmathCompiler cslFileName bibFileName = do
     bib <- load $ fromFilePath bibFileName
     body <- getResourceBody
     pandoc <- readPandocBiblio readerOptions csl bib body
-    pandocTikz <- withItemBody buildTikz pandoc
-    return $ writePandocWith writerOptions $ pandocTikz
+    pandocTikzAtom <- withItemBody (fmap buildAtoms. buildTikz) pandoc
+    return $ writePandocWith writerOptions $ pandocTikzAtom
 
 mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
                           Ext_latex_macros, Ext_implicit_figures]
@@ -165,10 +172,23 @@ pdfify tmpl attr contents =
 
 tikzFilter :: Block -> Compiler Block 
 tikzFilter (CodeBlock (id, "tikzpicture":extraClasses, namevals) contents) = pdfify "templates/tikzpicture.tex" attr contents
-    where attr = (id, "tikspicture":extraClasses, namevals)
+    where attr = (id, "tikzpicture":extraClasses, namevals)
 tikzFilter (CodeBlock (id, "tikzcd":extraClasses, namevals) contents) = pdfify "templates/tikzcd.tex" attr contents
-    where attr = (id, "tikspicture":extraClasses, namevals)
+    where attr = (id, "tikzpicture":extraClasses, namevals)
 tikzFilter x = return x
+
+atomList = ["theorem", "definition", "corollary", "example", "proposition", "lemma", "construction", "remark"]
+-- "Atom" is my joint name for these things - a self-contained blob of information.
+
+
+atomFilter :: Block -> Block
+atomFilter (Div (id, classes, namevals) contents) = case classes of
+    x:xs | lowercased x `elem` atomList -> Div (id, classes, namevals) $ [HorizontalRule, Header 4 (id, classes, namevals) $ [Str $ capitalized x]] ++ contents ++ [HorizontalRule]
+    __ -> Div (id, classes, namevals) contents
+atomFilter x = x
 
 buildTikz :: Pandoc -> Compiler Pandoc
 buildTikz = walkM tikzFilter
+
+buildAtoms :: Pandoc -> Pandoc
+buildAtoms = walk atomFilter
