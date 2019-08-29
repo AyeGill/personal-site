@@ -43,10 +43,12 @@ $\prod_{x\in X} \tau(x) =: \hat{X}$.
 This construction gives a functor $\hat{(-)}: \mathbf{TFS}_\cC \to \cC$.
 :::
 
-In fact, more is true: if we let $\mathbf{FPCat}$ denote the category of categories with finite products and functors that preserve them, we obtain a diagram:
+In fact, more is true: if we let $\mathbf{FPCat}$ denote the category of categories with finite products and functors that preserve them, we obtain a "pseudonatural transformation":
 
 ```tikzcd
 & \mathbf{Cat} \ar[rd, bend left=30] & \\
-\mathbf{FPCat} \ar[rr, draw=none, bend left=60, ""{name=U,above}] \ar[rr, bend right=60, ""{name=D, below}], \ar[ru, bend left=30]& & \mathbf{SMC}\ar[from=U, to=D, "T", shorten <=10pt,shorten >=10pt, Rightarrow]
+\mathbf{FPCat} \ar[rr, draw=none, bend left=60, ""{name=U,above}] \ar[rr, bend right=60, ""{name=D, below}], \ar[ru, bend left=30]& & \mathbf{SMC}\ar[from=U, to=D, "\hat{(-)}", shorten <=10pt,shorten >=10pt, Rightarrow]
 ```
 
+By "pseudonatural transformation", we mean that the functors we are looking at are 2-functors between 2-categories. It seems to me that they are not automatically strict - the functor $\mathbf{FPCat} \to \mathbf{SMC}$ seems to rely on a choice of products, which smells like the sort of thing that makes things non-strict.
+But my thinking on this area is imprecise.
