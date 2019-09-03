@@ -309,15 +309,21 @@ The clock marks the points where you "are standing on a vertex" - when the clock
 
 The adjunction $\Sigma_i \lvert \Delta_i$ factors through a geometric morphism
 
-$\Sigma_i' : \widetilde{Int} \xrightleftharpoons \widetilde{Int}_{/Sync} : \Delta_i'$
+$\Sigma_i' : \widetilde{Int_N} \xrightleftharpoons \widetilde{Int}_{/Sync} : \Delta_i'$
 
 Here $Sync = \Sigma_i(*)$.
+
+Moreover, the left adjoint $\Sigma_i'$ is fully faithful.
 
 :::
 
 We observe that $Sync(t) = [0,1)$, with translation functors given by adding and reducing modulo $1$.
 We think of the map $A \to Sync$ as assigning a clock phase in the above sense to each behaviour of $A$.
 We call these sheaves over $Sync$ *Synchronous sheaves*.
+
+The point is that these gives a common framework for comparing continuous and discrete behavior - $\widetilde{Int}$ has the obvious functor
+$X \mapsto X \times Sync$ into $\widetilde{Int}_{/Sync}$.
+
 
 ## Determinism and totality
 
@@ -339,17 +345,53 @@ The solution is to require that the behaviour of a machine determines the output
 
 It is worth noting that these properties do not in general hold for machines coming from continuous dynamical systems - since such systems can experience continuous-time blowup and nondeterminism.
 
+## Discrete Conduche Fibrations
+
+There is a construction equivalent to interval sheaves, called *discrete Conduche fibrations*.
+We think of an interval sheaf as a category, where each behaviour is a morphism, the objects are behaviours of length zero, and composition is given by gluing.
+This category comes equipped with a "length" functor into $(\bR_{\geq 0},+,0)$ or $(\bN_0, +, 0)$ viewed as one-object categories.
+
+::: Definition :::
+Given a category $\cC$, we let $\cC_0,\cC_1,\cC_2$ be the sets of objects, morphisms, and composable pairs, respectively.
+
+These have the obvious structure maps between them - we single out $\circ: \cC_2 \to \cC_1$ as the map sending a composable pair to the composite.
+
+A functor $\cC \to \cD$ is a *discrete Conduche fibration* if the diagram[^F]
+
+```tikzcd
+\cC_2 \ar[d,"F"] \ar["\circ"] & \cC_1\ar[d, "F"]\\
+\cD_2 \ar[r, "\circ"] & \cD_1
+```
+
+is Cartesian (i.e. a pullback).
+:::
+
+
+[^F]: Here the arrows labeled "F" are just the maps induced by the functor.
+
+In other words, given a map $f: x \to y$ in $\cC$, and a factorization $a \circ b = F(f)$, there is a unique pullback of this factorization to a factorization of $F$.
+
+We see that the above-described categories corresponding to interval sheaves have this property: given a behavior of length $\ell$, and a partition $\ell = a + b$, we have a unique splitting of our behavior into a behavior of length $a$ and one of length $b$.
+Moreover, this is all we need.
+
+This is all developed in higher generality in a paper by Lavwere.
+
+It seems that the idea being captured by the discrete Conduche fibrations is the idea that behaviours can be *split up*, decomposed - and the base category tells you how this can be done.
+
+This is of course very closely related to how a site/topos is about *gluing*.
+
+SSV: "Categories emphasize composition, and adding the Conduché condition enforces that
+morphisms can be factorized. Conversely, presheaves emphasize restriction, and adding
+the sheaf condition enforces that sections can be glued."
+
 ## To do
 
-- More about synchronicity
 - More about the various functors.
 - More about total and deterministic machines.
 - Wiring diagram semantics for machines
-- Conduche fibrations
   
 
 ### Flashcards
-- Definitions of $Int, Int_N$.
 - Definitions of the wiring diagram operad.
 - Definitions of machine (a very general machine is just a span in a topos.. is this an idea?), total, deterministic
 - What does it mean that (Euler's method is a $\cW_\cC$-algebra homomorphism?) (That you can do Euler's method to small open systems, compose them, and get the right result)

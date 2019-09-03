@@ -177,18 +177,18 @@ tikzFilter (CodeBlock (id, "tikzcd":extraClasses, namevals) contents) = pdfify "
     where attr = (id, "tikzpicture":extraClasses, namevals)
 tikzFilter x = return x
 
+buildTikz :: Pandoc -> Compiler Pandoc
+buildTikz = walkM tikzFilter
+
+
 atomList = ["theorem", "definition", "corollary", "example", "proposition", "lemma", "construction", "remark"]
 -- "Atom" is my joint name for these things - a self-contained blob of information.
-
 
 atomFilter :: Block -> Block
 atomFilter (Div (id, classes, namevals) contents) = case classes of
     x:xs | lowercased x `elem` atomList -> Div (id, classes, namevals) $ [HorizontalRule, Header 4 (id, classes, namevals) $ [Str $ capitalized x]] ++ contents ++ [HorizontalRule]
     __ -> Div (id, classes, namevals) contents
 atomFilter x = x
-
-buildTikz :: Pandoc -> Compiler Pandoc
-buildTikz = walkM tikzFilter
 
 buildAtoms :: Pandoc -> Pandoc
 buildAtoms = walk atomFilter

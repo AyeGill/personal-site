@@ -9,3 +9,6 @@ title: Paper Notes
 - [Ghani-Hedges-Viktor Winschel-Zahn: Compositional Game Theory](PaperNotes/GHWZ-Comp-Games-18/CompGames.html)
 - [Fong: Decorated Cospans](PaperNotes/Fong15/DecoratedCospans.html)
 - [Schultz - Spivak - Vasilakopulou: Dynamical systems and sheaves](PaperNotes/SSV16/SSV16.html)
+- [Hedges: Morphisms of Open Games](PaperNotes/Hedges17/Hedges17.html)
+- [Hedges - Herold: Foundations for Brick Diagrams](PaperNotes/HH19/HH19.html)
+- [Spivak: Generalized Lens Categories via functors $\cC^{op} \to \Cat$](PaperNotes/Spivak19/Spivak19.html)
