@@ -48,9 +48,49 @@ Since a comonoid in a Cartesian monoidal category is equivalent to just an objec
 Given a functor $\cC^{op} \to \Cat$, the category of $F$-lenses is simply the opposite of the (contravariant) Grothendieck construction of $F$.
 This is just buzzwords, so let's get into it:
 
+::: Definition :::
+
+Let $\cC$ be a category, and $F: \cC \to \Cat$ be a functor.
+Then the (covariant) *Grothendieck construction* of $F$ consists of a category over $\cC$,
+$\pi_F: Gr(F) \to \cC$, where
+
+- $ob(Gr(F)) = \coprod_{c \in ob(\cC)} ob(F(\cC))$
+- $Gr(F)((c,x),(c',x')) = \coprod_{f\in \cC(c,c')} \Hom_{F(c')}(F(f)(x),x')$.
+
+:::
+
+We can also define a *contravariant* version of this construction, for functors $F: \cC^{op} \to \Cat$. (See the paper). Let us write this $Gr^o$.
+
+::: Proposition :::
+Let $F: \cC^{op} \to \Cat$ be a functor, and let $F^p : \cC^{op} \to \Cat$ denote its pointwise opposite.
+Then $Gr(F)^{op} \cong Gr^o(F^p)$, and both are equivalent to the category with the same objects, and morphisms
+
+$\Hom((c,x),(c',x')) := \coprod_{f\in \cC(c,c')} \Hom_{F(c)}(F(f)(x'),x)$
+
+Moreover, these isomorphisms are over $\cC$.
+:::
+
+::: Definition :::
+
+Let $F: \cC^{op} \to \Cat$ be a functor. The *category of $F$-lenses* is the category of the proposition.
+It is denoted $Lens_F$.
+
+:::
+
+::: Example :::
+
+Taking the functor $Sub: Mfd \to \Cat$ which sends a manifold to the category of submersions over it,
+we recover open dynamical systems as lenses of the form
+
+$(M, TM \to M) \to (B, A \times B \to B)$.
+
+:::
+
 ## Todo
 
 ### Flashcards
 
 - Definitions of the various types of lens.
 - The Grothendieck construction.
+- How to recover notions of lens from the Grothendieck construction.
+- Monoidal Grothendieck construction.

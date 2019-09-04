@@ -12,6 +12,7 @@ A list of some projects/topics I'm thinking about, or have previously spent a lo
     - Can we say, for instance, in a nice way, what a (Radon?) measure on a pyknotic set is?
 - Develop probability theory from the complexity-theoretical viewpoint.
     - It should be possible to use a similar formal language to talk about uncertainty coming from limited computational resources, to the language we use for talking about uncertainty coming from lack of information (i.e normal probability theory).
+    - [This](https://www.alignmentforum.org/posts/Lz2nCYnBeaZyS68Xb/probability-as-minimal-map).
 - Learn more about previous approaches to categorical probability
     - Kurtz' theorem describes how a discrete Markov process is approximated by an ODE as $N \to \infty$ (this is a type of central limit theorem). Can we find a "categorical" CLT which recovers this?
 - Studying machine learning using categorical methods.
@@ -22,6 +23,7 @@ A list of some projects/topics I'm thinking about, or have previously spent a lo
     - AlphaGo Zero can be conceptualized as learning a "fixpoint" of Monte Carlo Tree Search. Can this be cast as a trace-type construction in a suitable monoidal category?
     - Could one prove some sort of functorial generalization bound?
 - I would like to write a book or set of notes in the vein of [Concrete Mathematics](https://openlibrary.org/works/OL3951639W/Concrete_mathematics), but covering more abstract methods, i.e category theory, topology, algebra, etc. (so, "Abstract Mathematics"). What I want to take from CM, then, is the expository style, focusing more on methods and problems than on definitions and theorems, and so on.
+- A model-categorical account of the higher category theory being used in application, e.g. monoidal pseudo double categories.
 
 ## Categorical Logic
 
