@@ -1,7 +1,0 @@
-matrix{
- & 2box2(l,ld,r,rd)[l,t=#$G$#]& \\
- & & \\
- & braid(rd,ru,ld,lu)& \\
- & & \\
- & 2box2(l,lu,r,ru)[l,t=#$D$#] & \\
-}

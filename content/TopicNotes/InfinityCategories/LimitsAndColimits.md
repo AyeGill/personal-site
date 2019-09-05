@@ -1,6 +1,6 @@
-Limits and Colimits
--------------------
-
+---
+title: Limits and Colimits
+---
 An object (ie, vertex) $X$ of a simplicial set $\cl{C}$ is *initial* if
 it's "weakly initial" in $h\cl{C}$ with the $\cl{H}$-enriched structure,
 i.e. if $\Hom_{h\cl{C}}(X,y)$ is contractible for all other objects $Y$.

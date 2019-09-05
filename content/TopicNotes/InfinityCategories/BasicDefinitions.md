@@ -1,6 +1,6 @@
-Basic Definition
-----------------
-
+---
+title: Basic Definition
+---
 A *topological category* is a category enriched over $\cl{CG}$, the
 category of compactly generated Hausdorff spaces
 

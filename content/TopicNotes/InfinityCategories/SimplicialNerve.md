@@ -1,5 +1,6 @@
-Simplicial Nerve and $\frk{C}$
-------------------------------
+---
+title: Simplicial Nerve and $\mathfrak{C}$
+---
 
 The usual functor $N: Cat \to sSet$ is defined by
 $\Hom_{sSet}(\Delta^n, N\cl{C}) = \Hom_{Cat}([n], \cl{C})$. This makes

@@ -1,7 +1,0 @@
-PWD /home/eigil/Dropbox/Matematik/LaTeXLogbookTemplate-master/TopicNotes
-INPUT /usr/local/texlive/2016/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT TopicNotes.tex
-OUTPUT TopicNotes.log
-OUTPUT TopicNotes.pdf

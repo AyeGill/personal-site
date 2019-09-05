@@ -1,6 +1,0 @@
-PWD /home/eigil/Dropbox/Matematik/Logbook/2017/11
-INPUT /usr/local/texlive/2016/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2016/texmf-var/web2c/xetex/xelatex.fmt
-INPUT 20171101.tex
-OUTPUT 20171101.log

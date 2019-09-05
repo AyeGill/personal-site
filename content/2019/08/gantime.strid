@@ -1,9 +1,0 @@
-matrix{
- & 2box2(l,ld,r,rd)[l,t=#$G$#]& \\
- & & \\
- 1box0(u)& & 1box0(u)[l,t=#$\delta$#,s=rectangle,d=d]&\\
- & braid(rd,ru,ld,lu)& \\
- 1box0(d)& & 1box0(d)[l,t=#$\delta$#,s=rectangle,d=d]&\\
- & & \\
- & 2box2(l,lu,r,ru)[l,t=#$D$#] & \\
-}

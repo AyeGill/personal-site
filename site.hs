@@ -75,13 +75,13 @@ listDir :: Compiler [Item String] -- find the posts to link from curent dir.
 -- /foo/bar/slurp.md, and /foo/bar/derp/index.md
 listDir = do
     path <- normalise <$> getResourceFilePath
-    unsafeCompiler $ print path
+    --unsafeCompiler $ print path
     let filesGlob = fromGlob $ takeDirectory path ++ "/*"
         dirsGlob = fromGlob $ takeDirectory path ++ "/*/index.md"
     files <- loadAll (filesGlob .&&. complement (fromGlob path)) --Don't match the index file itself.
     dirs <- loadAll dirsGlob
-    unsafeCompiler $ print files
-    unsafeCompiler $ print filesGlob
+    --unsafeCompiler $ print files
+    --unsafeCompiler $ print filesGlob
     return $ files ++ dirs
 
 dirIndexCompiler :: Compiler (Item String)
@@ -95,6 +95,16 @@ dirIndexCompiler = do
         >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
 
+mainIndexCompiler :: Compiler (Item String)
+mainIndexCompiler = do 
+    links <- (++) <$> loadAll "content/*" <*> loadAll "content/*/index.md"
+    let indexCtx = listField "posts" postCtx (return links) `mappend`
+                   postCtx
+    bibmathCompiler cslfile bibfile
+        >>= loadAndApplyTemplate "templates/post.html" postCtx
+        >>= loadAndApplyTemplate "templates/index.html" indexCtx
+        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        >>= relativizeUrls
 --------------------
 
 
@@ -125,6 +135,8 @@ main = hakyll $ do
     match "files/*" $ do
         route idRoute
         compile copyFileCompiler
+    
+    match "templates/*" $ compile templateCompiler
     
     --- Bibliography business
     match "bibliography/bib.csl" $ compile cslCompiler
@@ -168,19 +180,15 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
-    match "index.md" $ do
+    match "index.md" $ do -- Treat this as an index for the content dir
         route $ setExtension "html"
-        compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
+        compile $ mainIndexCompiler
+
     match "contact.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
-
-
-    match "templates/*" $ compile templateCompiler
 
     
 --------------------------------------------------------------------------------

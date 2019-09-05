@@ -1,6 +1,6 @@
-Diagrams
---------
-
+---
+title: Diagrams
+---
 If $\cl{C}$ is some topological category, which we think of as a higher
 category (for example the category of CW-complexes, representing
 $\cl{H}$), and $I$ is some (ordinary) index category, the correct notion
