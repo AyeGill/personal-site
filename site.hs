@@ -3,6 +3,7 @@ import           Data.Monoid (mappend)
 import Data.ByteString.Lazy.Char8 (pack, unpack)
 import qualified Network.URI.Encode as URI (encode)
 import           Hakyll
+import           Hakyll.Web.Template.Context
 import           Hakyll.Web.Pandoc.Biblio
 import qualified Data.Set as S
 import           Text.Pandoc.Options
@@ -12,23 +13,15 @@ import           Control.Monad.State
 import           Text.Pandoc.JSON
 import           Text.Pandoc.Walk    (walk, walkM)
 import qualified Data.Char as Char
+import System.FilePath.Posix
 
-lowercased :: String -> String
-lowercased = map Char.toLower
+--- Constants -------
+cslfile = "bibliography/bib.csl"
+bibfile = "bibliography/Citations.bib"
+---------------------
 
-capitalized :: String -> String
-capitalized (head:tail) = Char.toUpper head : lowercased tail
-capitalized [] = []
 
-bibmathCompiler :: String -> String -> Compiler (Item String)
-bibmathCompiler cslFileName bibFileName = do
-    csl <- load $ fromFilePath cslFileName
-    bib <- load $ fromFilePath bibFileName
-    body <- getResourceBody
-    pandoc <- readPandocBiblio readerOptions csl bib body
-    pandocTikzAtom <- withItemBody (fmap buildAtoms. buildTikz) pandoc
-    return $ writePandocWith writerOptions $ pandocTikzAtom
-
+-- Pandoc options ---
 mathExtensions = [Ext_tex_math_dollars, Ext_tex_math_double_backslash,
                           Ext_latex_macros, Ext_implicit_figures]
 defaultExtensions = writerExtensions defaultHakyllWriterOptions
@@ -42,9 +35,70 @@ readerOptions = defaultHakyllReaderOptions {
 }
 renderPandocMath = renderPandocWith defaultHakyllReaderOptions writerOptions
 
-cslfile = "bibliography/bib.csl"
-bibfile = "bibliography/Citations.bib"
+---------------------
+--- Util ------------
+lowercased :: String -> String
+lowercased = map Char.toLower
 
+capitalized :: String -> String
+capitalized (head:tail) = Char.toUpper head : lowercased tail
+capitalized [] = []
+
+notIndex :: Pattern
+notIndex = complement "**/index.md"
+--------------------
+
+--- Contexts -------
+postCtx :: Context String
+postCtx =
+    dateField "date" "%B %e, %Y" `mappend`
+    defaultContext
+
+pdfCtx :: Context CopyFile
+pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
+
+---------------------
+
+
+--- Compilers ------
+bibmathCompiler :: String -> String -> Compiler (Item String)
+bibmathCompiler cslFileName bibFileName = do
+    csl <- load $ fromFilePath cslFileName
+    bib <- load $ fromFilePath bibFileName
+    body <- getResourceBody
+    pandoc <- readPandocBiblio readerOptions csl bib body
+    pandocTikzAtom <- withItemBody (fmap buildAtoms. buildTikz) pandoc
+    return $ writePandocWith writerOptions $ pandocTikzAtom
+
+listDir :: Compiler [Item String] -- find the posts to link from curent dir.
+-- When run on /foo/bar/baz.md, returns the items /foo/bar/qux.md, 
+-- /foo/bar/slurp.md, and /foo/bar/derp/index.md
+listDir = do
+    path <- normalise <$> getResourceFilePath
+    unsafeCompiler $ print path
+    let filesGlob = fromGlob $ takeDirectory path ++ "/*"
+        dirsGlob = fromGlob $ takeDirectory path ++ "/*/index.md"
+    files <- loadAll (filesGlob .&&. complement (fromGlob path)) --Don't match the index file itself.
+    dirs <- loadAll dirsGlob
+    unsafeCompiler $ print files
+    unsafeCompiler $ print filesGlob
+    return $ files ++ dirs
+
+dirIndexCompiler :: Compiler (Item String)
+dirIndexCompiler = do
+    links <- listDir
+    let indexCtx = listField "posts" postCtx (return links) `mappend`
+                   postCtx
+    bibmathCompiler cslfile bibfile
+        >>= loadAndApplyTemplate "templates/post.html" postCtx
+        >>= loadAndApplyTemplate "templates/index.html" indexCtx
+        >>= loadAndApplyTemplate "templates/default.html" indexCtx
+        >>= relativizeUrls
+
+--------------------
+
+
+--- Main body ------------------------------------------------------------------
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -75,8 +129,6 @@ main = hakyll $ do
     --- Bibliography business
     match "bibliography/bib.csl" $ compile cslCompiler
     match "bibliography/Citations.bib" $ compile biblioCompiler
-    
-
 
     match "content/*.tex" $ do -- .tex files get a template with a bunch of commands applied before pandoc.
         route $ setExtension "html"
@@ -87,7 +139,13 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    match ("content/*.md" .||. "content/*.html") $ do
+    match "content/**/index.md" $ do -- Compile all index files.
+        route $ setExtension "html"
+        compile $ dirIndexCompiler
+
+
+    -- Don't parse index files twice
+    match (("content/**.md" .||. "content/**.html") .&&. notIndex) $ do
         route $ setExtension "html"
         compile $ bibmathCompiler cslfile bibfile
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -109,30 +167,6 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
-    
-    -- Could also consider approach where we generate top-folder files using templates?
-    match "content/2017.md" $ do
-        route $ setExtension "html"
-        compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "content/2018.md" $ do
-        route $ setExtension "html"
-        compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-    match "content/2019.md" $ do
-        route $ setExtension "html"
-        compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "content/*/*/*.md" $ do
-        route $ setExtension "html"
-        compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
 
     match "index.md" $ do
         route $ setExtension "html"
@@ -150,13 +184,6 @@ main = hakyll $ do
 
     
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
-
-pdfCtx :: Context CopyFile
-pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
 
 --- Pandoc filters for tikz stuff
 pdfify :: String -> Attr -> String -> Compiler Block
@@ -180,6 +207,7 @@ tikzFilter x = return x
 buildTikz :: Pandoc -> Compiler Pandoc
 buildTikz = walkM tikzFilter
 
+--- Pandoc filter for "atoms":
 
 atomList = ["theorem", "definition", "corollary", "example", "proposition", "lemma", "construction", "remark"]
 -- "Atom" is my joint name for these things - a self-contained blob of information.

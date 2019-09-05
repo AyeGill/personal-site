@@ -11,6 +11,13 @@ packages:
       sha256: bd0cbe9051fae2b109d4b8955fd55a710b61c5dfd8b132d444c72c8f9e65c855
   original:
     hackage: hakyll-4.12.5.2
+- completed:
+    hackage: filepath-1.4.2.1@sha256:2dbe4b5aefb13242e413dd90faa15dc19faf7b451a8d668f73712b2ea52cdb12,2219
+    pantry-tree:
+      size: 681
+      sha256: 6bddb06d840296fcd45583a16812925cb4366833a8344537273c4b82723a0456
+  original:
+    hackage: filepath-1.4.2.1
 snapshots:
 - completed:
     size: 523454

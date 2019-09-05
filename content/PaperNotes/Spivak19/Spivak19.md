@@ -85,12 +85,3 @@ we recover open dynamical systems as lenses of the form
 $(M, TM \to M) \to (B, A \times B \to B)$.
 
 :::
-
-## Todo
-
-### Flashcards
-
-- Definitions of the various types of lens.
-- The Grothendieck construction.
-- How to recover notions of lens from the Grothendieck construction.
-- Monoidal Grothendieck construction.
