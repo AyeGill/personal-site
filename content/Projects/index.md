@@ -4,9 +4,8 @@ date: 2019-08-26
 ---
 A list of some projects/topics I'm thinking about, or have previously spent a lot of time thinking about. Please feel free to contact me with any thoughts on these, references to existing work, your own work, etc.
 
-## Assorted
+## Assorted ideas
 
-- [Some notes from my Bachelor thesis](Projects/Bachelorprojekt/Bachelorprojekt.html)
 - Develop analysis in the setting of pyknotic/condensed sets.
     - The ambition here is that a lot of things could be done internally.
     - Can we say, for instance, in a nice way, what a (Radon?) measure on a pyknotic set is?
@@ -40,3 +39,7 @@ Develop a good substitution for first-order logic in the setting of higher categ
 
 - [Main dump of notes](Projects/CellularEkAlgebras/CellularEkAlgebras.html)
 - [Notes on construction of trivial algebras](Projects/CellularEkAlgebras/TrivialAlgebras.html)
+
+---
+
+Unlisted:

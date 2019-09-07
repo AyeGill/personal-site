@@ -1,5 +1,6 @@
-Mapping Spaces of $\infty$-categories
--------------------------------------
+---
+title: Mapping Spaces of $\infty$-categories
+---
 
 Let $S$ be a simplicial set with $x,y$ vertices of $S$. Define
 $\Map_S(x,y) = \Map_{hS}(x,y) \in \cl{H}$

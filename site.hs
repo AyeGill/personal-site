@@ -184,7 +184,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ mainIndexCompiler
 
-    match "contact.md" $ do
+    match "personal.md" $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext

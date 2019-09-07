@@ -29,7 +29,7 @@ The equivalencee between these things is obvious: a petri net is just an
 uncurried reaction network. However, we usually draw Petri nets slightly
 differently, using diagrams like this:
 
-![image](PaperNotes/BaezPollard17/petrinet1.png)
+![A petri net](/images/petrinet1.png)
 
 We say that a reaction network $(S,T,s,t)$ or a Petri net $(S,T,n,m)$ is
 a network (or net)*on $S$*.
@@ -46,11 +46,11 @@ Defining the composition is a bit more complicated, because we need to
 figure out how to glue reaction networks together in a systematic way.
 We need to turn this:
 
-![image](PaperNotes/BaezPollard17/petrinetcomposition.png)
+![](/images/petrinetcomposition.png)
 
 Into this:
 
-![image](PaperNotes/BaezPollard17/petrinetcomposed.png)
+![](/images/petrinetcomposed.png)
 
 Doing this sort of thing systematically was worked out by Fong (see
 references in paper). The general idea, as far as I can tell, is that we
