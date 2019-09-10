@@ -81,4 +81,36 @@ Then we can ask for the generalization error as a function of $N$.
 If we try to make this functorial, is seems we will at most be able to get an inequality $Err(f;g) \leq Err(f) \star Err(g)$ for some operation $\star$.
 Do we need preorder or order-enriched categories? A lax functor?
 
-I really need to read those stupid ML lecture notes.
+We can think of some sort of category of *probablistic relations*.
+
+A normal relation, of the type coming from Spivak's work, is something like "if the input is $x$, then the output must be one of $y,z,w$".
+We can picture this as being *built* out of primitive things like "if the input has property $P$, then the output will have property $Q$ AND if the input satisfies ...",
+"the output is never further than $\epsilon$ from $f(\text{input})$"...
+In other words, a Boolean Algebra-enriched category of relations. Then a machine goes to the maximal relation it satisfies.
+
+Generalization bounds would be one type of probabilistic relations - augmented with a dependence on the number of training samples $N$.
+Then we have statements like "The *expected distance* from the output to $y$ is never more than $\epsilon(N) + \dots$, for any distribution on $(\text{input},y)$.
+
+A relation between $X$ and $Y$ is a monic span $R \into X \times Y$.
+A stochastic map $R \to X \times Y$ is a probability distribution on $X \times Y$ parameterized by some space $R$.
+
+Could try to generate a boolean algebra of "statements that can be true of learners $X \to Y$" - 
+i.e given by generators and relations.
+
+A relation between $Prob(X \times Y)$ and $Learn(X,Y)$?
+We have a map $E: Prob(X \times Y) \times Learn(X,Y) \times \bN \to \bR_+$, called *expected generalization error*.
+We could also think of a map $Rel(X \times Y) \times Hom(X,Y) \to \{0,1\}$, which just tests if a function satisfies a relation.
+We can think of the relation underlying a function as the strongest relation satisfied by the function.
+
+Then, in this view, we replace $\bB = \{0,1\}$ with $(\bN \to \bR_+)$ - instead of truth values, we have "$N$-dependent errors".
+Here is maybe makes sense to quotient by the equivalence relation $\{a_n\} \sim \{b_n\}$ if $\lim a_n/b_n = 1$ (or, if zero error is possible, $a_n, b_n$ both eventually zero).
+
+A generalization bound is something weird in this analogy - it's saying that, up to that error value, our function satisfies *all* relations.
+
+A relation is not really a statement about a function.. it is a statement about pairs of values?
+What I want to do is something like Spivak's thing.
+But here it's more like the input is the whole distribution, and the output is..?
+
+In Spivak's model, we have a subset of (statement about) possible input/output pairs, telling us what behavior of the model is possible.
+The interesting part is that this is not really a subset, but a *subobject*, which encapsulates the dynamics - it contains statements like "if the input has been $x_0$ for the last five time steps, the output must be $y_0$".
+We want to find some setting that allows our statements about the input/output behavior to incorporate *probabilistic* information ("the probability of $P$ is at most $\epsilon$"), and information about the *training* ("Assuming at least $N$ training samples, $P$ is true").

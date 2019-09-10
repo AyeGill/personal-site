@@ -18,6 +18,13 @@ packages:
       sha256: 6bddb06d840296fcd45583a16812925cb4366833a8344537273c4b82723a0456
   original:
     hackage: filepath-1.4.2.1
+- completed:
+    hackage: blaze-html-0.9.1.1@sha256:66f01bef8455b3387e592819584dbd5e501fe0bb5620a3bad80ca8f92d2b2296,2793
+    pantry-tree:
+      size: 2227
+      sha256: fcba08da4585059dbf59db4d025ecee290c1b74680b0c7e6e905d5627a27dc60
+  original:
+    hackage: blaze-html-0.9.1.1
 snapshots:
 - completed:
     size: 523454

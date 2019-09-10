@@ -13,6 +13,7 @@ A list of some projects/topics I'm thinking about, or have previously spent a lo
     - It should be possible to use a similar formal language to talk about uncertainty coming from limited computational resources, to the language we use for talking about uncertainty coming from lack of information (i.e normal probability theory).
     - [Probability as a minimal map](https://www.alignmentforum.org/posts/Lz2nCYnBeaZyS68Xb/probability-as-minimal-map).
     - [Logical induction](https://arxiv.org/pdf/1609.03543.pdf)
+    - Another perspective on probability: game-theoretic probability, where you generate a random variable to confound an adversary. Seems to play a role in 
 - Learn more about previous approaches to categorical probability
     - Kurtz' theorem describes how a discrete Markov process is approximated by an ODE as $N \to \infty$ (this is a type of central limit theorem). Can we find a "categorical" CLT which recovers this?
 - Studying machine learning using categorical methods.

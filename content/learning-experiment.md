@@ -167,3 +167,24 @@ I may not have had room for this variation, but not thinking of testing it was a
 
 I also want to make a note that, while I made some decisions randomly, I mostly just decided on a procedure.
 I say this to make sure I am not fooling myself with this [attire](https://www.lesswrong.com/s/5uZQHpecjn7955faL/p/4Bwr6s9dofvqPWakn) - that the fact that I rolled some dice doesn't trick me into thinking that I am doing some sort of controlled experiment.
+
+## Week 1 Postmorten
+
+Week 1 was a pretty dismal failure - I managed to create a few flashcards for cognitive science and machine learning as desired, but I completely failed to make any notes for biology. I also fell behind my reading there.
+
+I want to record some things I think I learned from week one
+
+- Notes, whether flashcards or written, should be taken at the end of the reading session or during it, not at a later session (you're likely to forget).
+- Akrasia is the enemy (we already knew this).
+- The approx. half-hour sessions seemed to work better.
+
+As a result, I'm revising my strategy from here and abandoning the original experiment.
+For the next week, I'll be doing
+
+- Five 32-minute pomodoros from each book. If necessary, I'll do two pomodoros from one book in a day, but I'll try to avoid this
+- During Machine Learning, I'll be making notes as I go along of concepts that should go on cards, then writing them all in at the end
+- During Cognitive Science, I'll type up what I've read at the end.
+- During Biology, I'll try to pick out 1-3 key concepts at the end and make longer-form cards for them.
+
+I was pretty remiss in doing exercises, so I'll make an effort to be better at that this week.
+I may try different approaches to that in the future.

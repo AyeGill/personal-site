@@ -5,10 +5,15 @@ import qualified Network.URI.Encode as URI (encode)
 import           Hakyll
 import           Hakyll.Web.Template.Context
 import           Hakyll.Web.Pandoc.Biblio
+import           Text.Blaze.Html                 (toHtml, toValue, (!))
+import           Text.Blaze.Html.Renderer.String (renderHtml)
+
+import qualified Text.Blaze.Html5                as H
+import qualified Text.Blaze.Html5.Attributes     as A
 import qualified Data.Set as S
 import           Text.Pandoc.Options
 import Control.Monad (liftM)
-import           Data.List           (intercalate)
+import           Data.List           (intercalate, intersperse)
 import           Control.Monad.State
 import           Text.Pandoc.JSON
 import           Text.Pandoc.Walk    (walk, walkM)
@@ -54,6 +59,19 @@ postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
+tagsField' :: String -> Tags -> Context a
+tagsField' = tagsFieldWith getTags simpleRenderLink (mconcat . intersperse ", ")
+
+simpleRenderLink :: String -> Maybe FilePath -> Maybe H.Html
+simpleRenderLink _   Nothing         = Nothing
+simpleRenderLink tag (Just filePath) =
+  Just $ H.a ! A.href (toValue $ toUrl filePath) $ toHtml tag
+
+
+postCtxWithTags :: Tags -> Context String
+postCtxWithTags tags =  tagsField "tags" tags
+                        `mappend` postCtx
+
 pdfCtx :: Context CopyFile
 pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
 
@@ -84,13 +102,13 @@ listDir = do
     --unsafeCompiler $ print filesGlob
     return $ files ++ dirs
 
-dirIndexCompiler :: Compiler (Item String)
-dirIndexCompiler = do
+dirIndexCompiler :: Tags -> Compiler (Item String)
+dirIndexCompiler tags = do
     links <- listDir
     let indexCtx = listField "posts" postCtx (return links) `mappend`
                    postCtx
     bibmathCompiler cslfile bibfile
-        >>= loadAndApplyTemplate "templates/post.html" postCtx
+        >>= loadAndApplyTemplate "templates/post.html" (postCtxWithTags tags)
         >>= loadAndApplyTemplate "templates/index.html" indexCtx
         >>= loadAndApplyTemplate "templates/default.html" indexCtx
         >>= relativizeUrls
@@ -110,8 +128,13 @@ mainIndexCompiler = do
 
 --- Main body ------------------------------------------------------------------
 --------------------------------------------------------------------------------
+config :: Configuration
+config = defaultConfiguration {
+    deployCommand = "cd _site && rsync -r . ayegill_efr-personal@ssh.phx.nearlyfreespeech.net:"
+}
+
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
     --"loose" files
     match "images/*" $ do
         route   idRoute
@@ -142,43 +165,58 @@ main = hakyll $ do
     match "bibliography/bib.csl" $ compile cslCompiler
     match "bibliography/Citations.bib" $ compile biblioCompiler
 
+    --- Tags:
+    tags <- buildTags "content/**" (fromCapture "tags/*.html")
+    tagsRules tags $ \tag pattern -> do
+        let title = "Posts tagged \"" ++ tag ++ "\""
+        route idRoute
+        compile $ do
+            posts <- loadAll pattern
+            let ctx = constField "title" title
+                      `mappend` listField "posts" postCtx (return posts)
+                      `mappend` defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/tag.html" ctx
+                >>= loadAndApplyTemplate "templates/default.html" ctx
+                >>= relativizeUrls
+
+
+    --- Build tags page
+
+    create ["tags.html"] $ do
+        route idRoute
+        compile $ do
+            tagsString <- renderTags (\tag url _ _ _ -> "<li><a href=\"" ++ url ++ "\">" ++ tag ++ "</a></li>")
+                                     (\tagStrs -> "<ul>" ++ intercalate "\n" tagStrs ++ "</ul>")
+                                     tags
+            makeItem "" >>= loadAndApplyTemplate "templates/default.html" (constField "body" tagsString `mappend` constField "title" "Tags")
+                        >>= relativizeUrls
+
+
+
+
     match "content/*.tex" $ do -- .tex files get a template with a bunch of commands applied before pandoc.
         route $ setExtension "html"
         compile $ getResourceBody
             >>= loadAndApplyTemplate "templates/tex-commands.tex" postCtx
             >>= renderPandocMath
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "content/**/index.md" $ do -- Compile all index files.
         route $ setExtension "html"
-        compile $ dirIndexCompiler
+        compile $ dirIndexCompiler tags
 
 
     -- Don't parse index files twice
     match (("content/**.md" .||. "content/**.html") .&&. notIndex) $ do
         route $ setExtension "html"
         compile $ bibmathCompiler cslfile bibfile
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/post.html"    (postCtxWithTags tags)
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
-
-    create ["archive.html"] $ do
-        route idRoute
-        compile $ do
-            posts <- loadAll "content/*"
-            pdfs <- loadAll "pdfs/*"
-            let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    listField "pdfs" pdfCtx   (return pdfs)  `mappend`
-                    constField "title" "Archives"            `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-                >>= relativizeUrls
 
     match "index.md" $ do -- Treat this as an index for the content dir
         route $ setExtension "html"
