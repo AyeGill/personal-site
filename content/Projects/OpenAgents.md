@@ -114,3 +114,10 @@ But here it's more like the input is the whole distribution, and the output is..
 In Spivak's model, we have a subset of (statement about) possible input/output pairs, telling us what behavior of the model is possible.
 The interesting part is that this is not really a subset, but a *subobject*, which encapsulates the dynamics - it contains statements like "if the input has been $x_0$ for the last five time steps, the output must be $y_0$".
 We want to find some setting that allows our statements about the input/output behavior to incorporate *probabilistic* information ("the probability of $P$ is at most $\epsilon$"), and information about the *training* ("Assuming at least $N$ training samples, $P$ is true").
+
+(Discrete) interval presheaves have a set of states, a set of possible transitions, a set of possible "paths of length $2$", and so on.
+(If a "path of length $n$" is uniquely determined as a sequence of $n$ transtions, it is an interval *sheaf*).
+
+In our case, we could say that there was a set of possible measurements of each size $N$, $\{X_N\}_{N\in\bN}$.
+This would be a presheaf on the category of finite sets - a sheaf is one where $X_N = X_1^N$.
+
