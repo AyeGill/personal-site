@@ -1,6 +1,7 @@
 ---
 title: Open Agents
 date: 2019-09-05
+tags: AI, Questions
 ---
 
 This is about a variation on Hedges' *open games*.
@@ -121,3 +122,51 @@ We want to find some setting that allows our statements about the input/output b
 In our case, we could say that there was a set of possible measurements of each size $N$, $\{X_N\}_{N\in\bN}$.
 This would be a presheaf on the category of finite sets - a sheaf is one where $X_N = X_1^N$.
 
+Maybe something: Our map $(X\times Y)^N \times X \to Y$ defines a relation on $X^{N+1} \times Y^{N+1}$.
+In the analogy above, this is a subsheaf which is not a sheaf.
+
+Can't ask "does this set of measurements and test, element in $X^{N+1} \times Y^{N+1}$, satisfy the generalization bound"?
+But you can ask for the error. And you can ask for the subset with low error.
+
+- "Prediction error $\leq \epsilon$ for AlgX" is a relation on (subset of) $X^{N+1} \times Y^{N+1}$ - it says "if we train AlgX on the first $N$ points, input $X_{N+1}$, the output is at most $\epsilon$ from $Y_{N+1}$.
+- "Generalization error $\leq \epsilon$ for AlgX" is similarly a subset of $X^{N+1} \times Y^{N+1}$
+
+A function $f: X \to Y$ satisfies a relation $R: X \leftrightarrow Y$ if $f(x) R y$ for all $X$ - this is $f \leq R$, not $f \in R$.
+A learning algorithm is the function in this case. It has an associated "statistical relation", and we say it satisfies a different "statistical relation" if it implies it. 
+
+Statistics - dynamics : "Statistical contracts" - "input/ouput relations in interval sheaves" : "dynamical open games (as above)" - "Bayesian/statistical/learning games".
+
+## Compositional Convergence
+
+We have stuff like the Perceptron Convergence Theorem, which says that if you have a classification problem which *can* be solved by a perceptron (is linearly separable), and you provide enough samples, eventually the perceptron converges to a solution.
+There are probably similar results for deeper neural networks, although I can't state them offhand (although I've heard, I think, that any continuous function can be approximated by a deep/big enough neural network).
+
+Now this makes sense in the setting of Fong/Spivak/Tuyeras learners.
+Given $L: X \to Y$, metrics on $X$ and $Y$ (so that we have a metric on $Y^X$), and a class of functions $\cF \subseteq Y^X$,
+we can ask whether, given some function $f \in \cF$ and a probability distribution $D(x)$ on $X$,
+the stochastic process $p \mapsto_{x \sim D} U_L(x,f(x))$ on the parameter space $L_P$ converges, in the sense that for any $\epsilon, \delta$, we can find $N$ big enough so that, after $N$ generations, the probability that $d(I_p(x),f(x))$ is greater than $\epsilon$ is less than $\delta$, either for all $x$ or for $X$ distributed on $D$ (more fair).
+Obviously one could list a number of different, maybe equivalent, convergence notions that would make sense here.
+
+Now the question would be: does this compose. If $L$ is universal for $\cF$ and $L'$ is universal for $\cF'$, is $L;L'$ universal for $\{f;f' \mid f\in \cF, f'\in \cF'\}$.
+
+First, we need to think about "compatibility" - it's clear that we need to make the metrics part of the objects in the $Learn$ category, but this is probably not a big issue.
+More interestingly, we should think about the probability distributions on $X$ - where do they come from? When formulating the property for $L$, we also put a distribution on $Y$ - does this just disappear? That seems weird. Or are we assuming it holds for any distribution? Seems possible if we also get to assume that the later inputs are drawn from the same distribution.
+
+Do we ask that it holds for all $p\in P$, or "with high probability" given some distribution on $P$? The latter seems more reasonable (also a question of: can $N$ depend on $p$?).
+
+The second question is - what about the request maps?
+It seems clear that if the request function of $L'$ is shit, $L$ has no chance of learning anything useful, so chances of learning $f;f'$ are grim.
+So we need to add some condition to the request map if we want to have any hope of getting a notion closed under composition.
+
+Some bad ideas:
+
+- Start with $x\in X$. Update $x$ by sampling $p\in P$, setting $x \mapsto $r(x,f(x),p)$
+- Ask that $I_p(x)$ converges to $f(x)$ for all $p$
+
+Clearly stupid. Find a picture that is classified correctly by any weights? Stupid.
+
+- Fix $p\in P$, start with $x_0$ and do $x_{n+1} = r(x_n,f(x_n),p)$
+- Ask that, $I_p(x_N)$ converges to $f(x_0)$
+
+This is at least somewhat reasonable, and consistent with what request is "supposed" to do - produce input which, at the current parameterization, matches the current output.
+Unclear if it works for us, though?

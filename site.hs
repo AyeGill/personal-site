@@ -8,6 +8,10 @@ import           Hakyll.Web.Pandoc.Biblio
 import           Text.Blaze.Html                 (toHtml, toValue, (!))
 import           Text.Blaze.Html.Renderer.String (renderHtml)
 
+import qualified Data.Map as M
+import Data.Maybe
+import Data.Map (Map)
+import Data.List.Split
 import qualified Text.Blaze.Html5                as H
 import qualified Text.Blaze.Html5.Attributes     as A
 import qualified Data.Set as S
@@ -15,10 +19,14 @@ import           Text.Pandoc.Options
 import Control.Monad (liftM)
 import           Data.List           (intercalate, intersperse)
 import           Control.Monad.State
+import Control.Monad.Error
 import           Text.Pandoc.JSON
 import           Text.Pandoc.Walk    (walk, walkM)
 import qualified Data.Char as Char
 import System.FilePath.Posix
+import Text.BibTeX.Parse (file, skippingLeadingSpace)
+import Text.BibTeX.Entry (T(Cons))
+import Text.Parsec.String (parseFromFile)
 
 --- Constants -------
 cslfile = "bibliography/bib.csl"
@@ -51,6 +59,10 @@ capitalized [] = []
 
 notIndex :: Pattern
 notIndex = complement "**/index.md"
+
+orElse :: Maybe a -> a -> a
+orElse (Just x) _ = x
+orElse Nothing x = x
 --------------------
 
 --- Contexts -------
@@ -81,11 +93,12 @@ pdfCtx = metadataField `mappend` urlField "url" `mappend` pathField "title"
 --- Compilers ------
 bibmathCompiler :: String -> String -> Compiler (Item String)
 bibmathCompiler cslFileName bibFileName = do
-    csl <- load $ fromFilePath cslFileName
-    bib <- load $ fromFilePath bibFileName
+   -- csl <- load $ fromFilePath cslFileName
+   -- bib <- load $ fromFilePath bibFileName
     body <- getResourceBody
-    pandoc <- readPandocBiblio readerOptions csl bib body
-    pandocTikzAtom <- withItemBody (fmap buildAtoms. buildTikz) pandoc
+    pandoc <- readPandocWith readerOptions body
+    bib <- loadBibliography bibfile
+    pandocTikzAtom <- withItemBody (fmap (buildCites bib . buildAtoms) . buildTikz) pandoc
     return $ writePandocWith writerOptions $ pandocTikzAtom
 
 listDir :: Compiler [Item String] -- find the posts to link from curent dir.
@@ -266,3 +279,40 @@ atomFilter x = x
 
 buildAtoms :: Pandoc -> Pandoc
 buildAtoms = walk atomFilter
+
+--- Citations processing
+type Bibliography = Map String [(String,String)] -- id to fields. We ignore entry types for the moment.
+
+citeFilter :: Bibliography -> Inline -> Inline
+citeFilter bib (Cite t s) = Span nullAttr $ map (showCite bib) t
+citeFilter _ x = x
+
+
+---TODO: Make something better here.
+showCite :: Bibliography -> Citation -> Inline
+showCite bib (Citation citeId _ _ _ _ _) = case M.lookup citeId bib of
+    Nothing -> Strong [Str $ "???" ++ citeId]
+    Just citeFields -> 
+        let title = lookup "Title" citeFields `orElse` citeId 
+            url = (lookup "URL" citeFields >>= \url -> return $ Link nullAttr [Str title] (url,title)) `orElse` Str ""
+            
+            authorsStr = lookup "Author" citeFields `orElse` ""
+            authors = splitOn " and " authorsStr
+            authorAbbrev = abbrev authors
+            year = lookup "Year" citeFields `orElse` "????"
+            inline = undefined
+        in Span nullAttr $ [Str $ "\"" ++ authors ++ ": " ++ title ++ "\"", Note [Plain [url]]]
+
+buildCites :: Bibliography -> Pandoc -> Pandoc
+buildCites bib = walk $ citeFilter bib
+
+normalizeAuthor :: String -> String -- try to do something reasonable. TODO: "John Smith -> Smith" "Smith, John -> Smith"
+normalizeAuthor str =  head $  splitOn ", " str
+
+
+loadBibliography :: FilePath -> Compiler Bibliography
+loadBibliography path = do
+    parse <- unsafeCompiler $ parseFromFile (skippingLeadingSpace file) path
+    case parse of
+        Left err -> throwError [show err]
+        Right entryList -> return $ M.fromList (map (\(Cons _ entryId fields) -> (entryId, fields)) entryList)

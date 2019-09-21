@@ -168,7 +168,7 @@ I may not have had room for this variation, but not thinking of testing it was a
 I also want to make a note that, while I made some decisions randomly, I mostly just decided on a procedure.
 I say this to make sure I am not fooling myself with this [attire](https://www.lesswrong.com/s/5uZQHpecjn7955faL/p/4Bwr6s9dofvqPWakn) - that the fact that I rolled some dice doesn't trick me into thinking that I am doing some sort of controlled experiment.
 
-## Week 1 Postmorten
+## Week 1 Postmortem
 
 Week 1 was a pretty dismal failure - I managed to create a few flashcards for cognitive science and machine learning as desired, but I completely failed to make any notes for biology. I also fell behind my reading there.
 
@@ -188,3 +188,30 @@ For the next week, I'll be doing
 
 I was pretty remiss in doing exercises, so I'll make an effort to be better at that this week.
 I may try different approaches to that in the future.
+
+## Week 2 Postmorten
+
+Week 2 went better - I managed to stick with the 32 min pomodoros.
+
+Changing my notetaking in biology to taking notes along the way.
+
+# Week 3 Postmortem
+
+No significant updates - I missed a day of notes for cognitive science.
+For next week, I should try reading on a tablet and taking notes on paper beside it.
+Maybe try to compare
+- Status quo, work on computer
+- Read on tablet and note on paper
+- Read on tablet and note on computer
+Should try to feel whether any potential trouble is due to slowness of tablet or more intrinsic.
+
+At the end of the week, I'm feeling more inclined to take a break and make a completely different plan for next week.
+I think I would rather pick out five papers, and do three pomos on each (one day for each) using Nielsen's method.
+
+I decide on
+
+- Fuji's thesis
+- Caramello, *denseness conditions*
+- Categorical semantics for causal structure(Kissinger-Uiljen)
+- Graphical Regular Logic
+- Baez - structured cospans
