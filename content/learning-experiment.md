@@ -215,3 +215,4 @@ I decide on
 - Categorical semantics for causal structure(Kissinger-Uiljen)
 - Graphical Regular Logic
 - Baez - structured cospans
+
